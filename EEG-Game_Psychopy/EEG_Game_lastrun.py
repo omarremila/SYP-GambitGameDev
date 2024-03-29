@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.2.3),
-    on March 28, 2024, at 15:00
+    on March 28, 2024, at 23:04
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -44,6 +44,9 @@ button3 = False
 button4 = False
 button5 = False
 
+#Duration of game details explained
+GameDet_dur = 5
+
 #Set number of repetitions  for each test
 global_rep_num = 1
 rep_num1 = global_rep_num
@@ -67,6 +70,7 @@ dur_test4 = global_dur_test
 
 dur_blank = 1
 
+#Duration of win/lose screens
 dur_end = 5
 #Update display to show target object
 def selectTarget(objects, target):
@@ -371,7 +375,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='homepage_image', 
         image='homepage_1.webp', mask=None, anchor='center',
-        ori=0.0, pos=(0, 0), size=(1.5, 1),
+        ori=0.0, pos=(0, 0), size=(1.5, 1.2),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
@@ -459,7 +463,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         name='white_background', 
         image='white_background.jpeg', mask=None, anchor='center',
         ori=0.0, pos=(0, 0), size=(1.5, 1),
-        color=[1,1,1], colorSpace='rgb', opacity=None,
+        color=[0.6549, 0.6549, 0.6549], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
     welcome_message = visual.TextStim(win=win, name='welcome_message',
@@ -478,11 +482,11 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-2.0)
     button = visual.ButtonStim(win, 
-        text='By clicking, you acknowledge understanding the epilepsy risk.', font='Arvo',
-        pos=(0.5, -0.4),
+        text='By clicking here, you acknowledge understanding the epilepsy risk.', font='Arvo',
+        pos=(0, -0.35),
         letterHeight=0.03,
         size=(0.5, 0.2), borderWidth=2.0,
-        fillColor='white', borderColor='red',
+        fillColor=[1.0000, 0.9500, -1.0000], borderColor=[-1.0000, -1.0000, -1.0000],
         color='black', colorSpace='rgb',
         opacity=None,
         bold=True, italic=False,
@@ -499,6 +503,38 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         color=[0.0902, -1.0000, -1.0000], colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-4.0);
+    
+    # --- Initialize components for Routine "GameDet" ---
+    MindBattle = visual.ImageStim(
+        win=win,
+        name='MindBattle', 
+        image='alien_invasion.jpg', mask=None, anchor='center',
+        ori=0.0, pos=(0, 0), size=(1.5, 1),
+        color=[1,1,1], colorSpace='rgb', opacity=None,
+        flipHoriz=False, flipVert=False,
+        texRes=128.0, interpolate=True, depth=0.0)
+    explanation = visual.TextStim(win=win, name='explanation',
+        text='Aliens are attacking Earth and it is up to you to stop them using the power of your mind. Focus on the RED outlined spaceship to stop its attack and save Earth. Fail to focus on the target and the aliens will win.',
+        font='Open Sans',
+        pos=(0, 0.33), height=0.05, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=-1.0);
+    Skip = visual.ButtonStim(win, 
+        text='Skip', font='Arvo',
+        pos=(0, -0.3),
+        letterHeight=0.04,
+        size=(0.2, 0.1), borderWidth=2.0,
+        fillColor=[-1.0000, -1.0000, -1.0000], borderColor=[1.0000, 1.0000, 1.0000],
+        color=[1.0000, 1.0000, 1.0000], colorSpace='rgb',
+        opacity=None,
+        bold=True, italic=False,
+        padding=None,
+        anchor='center',
+        name='Skip',
+        depth=-2
+    )
+    Skip.buttonClock = core.Clock()
     
     # --- Initialize components for Routine "PickTest" ---
     brain_animation = visual.MovieStim(
@@ -585,10 +621,10 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     )
     button_all.buttonClock = core.Clock()
     text = visual.TextStim(win=win, name='text',
-        text='Welcome: Chose a test by clicking on one of the boxes',
+        text='Choose a level by clicking on one of the boxes',
         font='Open Sans',
-        pos=(0, 0.4), height=0.05, wrapWidth=None, ori=0.0, 
-        color='white', colorSpace='rgb', opacity=None, 
+        pos=(0, 0.47), height=0.045, wrapWidth=None, ori=0.0, 
+        color=[1.0000, 1.0000, 1.0000], colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-6.0);
     
@@ -640,7 +676,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
     continue_playing_message_4 = visual.TextStim(win=win, name='continue_playing_message_4',
-        text='Aliens are still attacking!!!',
+        text='Good job but another wave of aliens are coming!',
         font='Open Sans',
         pos=(0, 0.45), height=0.045, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
@@ -723,7 +759,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
     continue_playing_message_3 = visual.TextStim(win=win, name='continue_playing_message_3',
-        text='Aliens are still attacking!!!',
+        text='Good job but another wave of aliens are coming!',
         font='Open Sans',
         pos=(0, 0.45), height=0.045, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
@@ -820,7 +856,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
     continue_playing_message_2 = visual.TextStim(win=win, name='continue_playing_message_2',
-        text='Aliens are still attacking!!!',
+        text='Good job but another wave of aliens are coming!',
         font='Open Sans',
         pos=(0, 0.45), height=0.045, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
@@ -987,7 +1023,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
     continue_playing_message = visual.TextStim(win=win, name='continue_playing_message',
-        text='Aliens are still attacking!!!',
+        text='Good job but another wave of aliens are coming!',
         font='Open Sans',
         pos=(0, 0.45), height=0.045, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
@@ -1021,7 +1057,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
     lose_message = visual.TextStim(win=win, name='lose_message',
-        text='YOU LOSE!!! Aliens took over Earth!!!\nYou did not focus on the correct spaceship',
+        text='YOU LOSE!!! Aliens destroyed Earth!!!\nYou did not focus on the correct spaceship',
         font='Open Sans',
         pos=(0, 0.45), height=0.045, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
@@ -1758,7 +1794,153 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     else:
        thisExp.addData('button.timesOn', "")
        thisExp.addData('button.timesOff', "")
+    # Run 'End Routine' code from code_6
+    skip = False
     # the Routine "WarningScreen" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
+    
+    # --- Prepare to start Routine "GameDet" ---
+    continueRoutine = True
+    # update component parameters for each repeat
+    thisExp.addData('GameDet.started', globalClock.getTime())
+    # skip this Routine if its 'Skip if' condition is True
+    continueRoutine = continueRoutine and not (skip == True)
+    # reset Skip to account for continued clicks & clear times on/off
+    Skip.reset()
+    # keep track of which components have finished
+    GameDetComponents = [MindBattle, explanation, Skip]
+    for thisComponent in GameDetComponents:
+        thisComponent.tStart = None
+        thisComponent.tStop = None
+        thisComponent.tStartRefresh = None
+        thisComponent.tStopRefresh = None
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+    frameN = -1
+    
+    # --- Run Routine "GameDet" ---
+    routineForceEnded = not continueRoutine
+    while continueRoutine:
+        # get current time
+        t = routineTimer.getTime()
+        tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        
+        # *MindBattle* updates
+        
+        # if MindBattle is starting this frame...
+        if MindBattle.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            MindBattle.frameNStart = frameN  # exact frame index
+            MindBattle.tStart = t  # local t and not account for scr refresh
+            MindBattle.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(MindBattle, 'tStartRefresh')  # time at next scr refresh
+            # add timestamp to datafile
+            thisExp.timestampOnFlip(win, 'MindBattle.started')
+            # update status
+            MindBattle.status = STARTED
+            MindBattle.setAutoDraw(True)
+        
+        # if MindBattle is active this frame...
+        if MindBattle.status == STARTED:
+            # update params
+            pass
+        
+        # *explanation* updates
+        
+        # if explanation is starting this frame...
+        if explanation.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            explanation.frameNStart = frameN  # exact frame index
+            explanation.tStart = t  # local t and not account for scr refresh
+            explanation.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(explanation, 'tStartRefresh')  # time at next scr refresh
+            # add timestamp to datafile
+            thisExp.timestampOnFlip(win, 'explanation.started')
+            # update status
+            explanation.status = STARTED
+            explanation.setAutoDraw(True)
+        
+        # if explanation is active this frame...
+        if explanation.status == STARTED:
+            # update params
+            pass
+        # *Skip* updates
+        
+        # if Skip is starting this frame...
+        if Skip.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
+            # keep track of start time/frame for later
+            Skip.frameNStart = frameN  # exact frame index
+            Skip.tStart = t  # local t and not account for scr refresh
+            Skip.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Skip, 'tStartRefresh')  # time at next scr refresh
+            # add timestamp to datafile
+            thisExp.timestampOnFlip(win, 'Skip.started')
+            # update status
+            Skip.status = STARTED
+            Skip.setAutoDraw(True)
+        
+        # if Skip is active this frame...
+        if Skip.status == STARTED:
+            # update params
+            pass
+            # check whether Skip has been pressed
+            if Skip.isClicked:
+                if not Skip.wasClicked:
+                    # if this is a new click, store time of first click and clicked until
+                    Skip.timesOn.append(Skip.buttonClock.getTime())
+                    Skip.timesOff.append(Skip.buttonClock.getTime())
+                elif len(Skip.timesOff):
+                    # if click is continuing from last frame, update time of clicked until
+                    Skip.timesOff[-1] = Skip.buttonClock.getTime()
+                if not Skip.wasClicked:
+                    # end routine when Skip is clicked
+                    continueRoutine = False
+                if not Skip.wasClicked:
+                    # run callback code when Skip is clicked
+                    skip = True
+        # take note of whether Skip was clicked, so that next frame we know if clicks are new
+        Skip.wasClicked = Skip.isClicked and Skip.status == STARTED
+        
+        # check for quit (typically the Esc key)
+        if defaultKeyboard.getKeys(keyList=["escape"]):
+            thisExp.status = FINISHED
+        if thisExp.status == FINISHED or endExpNow:
+            endExperiment(thisExp, inputs=inputs, win=win)
+            return
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            routineForceEnded = True
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in GameDetComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # --- Ending Routine "GameDet" ---
+    for thisComponent in GameDetComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    thisExp.addData('GameDet.stopped', globalClock.getTime())
+    thisExp.addData('Skip.numClicks', Skip.numClicks)
+    if Skip.numClicks:
+       thisExp.addData('Skip.timesOn', Skip.timesOn)
+       thisExp.addData('Skip.timesOff', Skip.timesOff)
+    else:
+       thisExp.addData('Skip.timesOn', "")
+       thisExp.addData('Skip.timesOff', "")
+    # the Routine "GameDet" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
     
     # set up handler to look after randomisation of conditions etc
@@ -1846,7 +2028,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
             # *button_t1* updates
             
             # if button_t1 is starting this frame...
-            if button_t1.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
+            if button_t1.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
                 # keep track of start time/frame for later
                 button_t1.frameNStart = frameN  # exact frame index
                 button_t1.tStart = t  # local t and not account for scr refresh
@@ -1884,7 +2066,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
             # *button_t2* updates
             
             # if button_t2 is starting this frame...
-            if button_t2.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
+            if button_t2.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
                 # keep track of start time/frame for later
                 button_t2.frameNStart = frameN  # exact frame index
                 button_t2.tStart = t  # local t and not account for scr refresh
@@ -1922,7 +2104,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
             # *button_t3* updates
             
             # if button_t3 is starting this frame...
-            if button_t3.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
+            if button_t3.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
                 # keep track of start time/frame for later
                 button_t3.frameNStart = frameN  # exact frame index
                 button_t3.tStart = t  # local t and not account for scr refresh
@@ -1960,7 +2142,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
             # *button_t4* updates
             
             # if button_t4 is starting this frame...
-            if button_t4.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
+            if button_t4.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
                 # keep track of start time/frame for later
                 button_t4.frameNStart = frameN  # exact frame index
                 button_t4.tStart = t  # local t and not account for scr refresh
@@ -1998,7 +2180,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
             # *button_all* updates
             
             # if button_all is starting this frame...
-            if button_all.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
+            if button_all.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
                 # keep track of start time/frame for later
                 button_all.frameNStart = frameN  # exact frame index
                 button_all.tStart = t  # local t and not account for scr refresh
@@ -2038,7 +2220,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
             # *text* updates
             
             # if text is starting this frame...
-            if text.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
+            if text.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
                 # keep track of start time/frame for later
                 text.frameNStart = frameN  # exact frame index
                 text.tStart = t  # local t and not account for scr refresh
@@ -2441,7 +2623,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # update component parameters for each repeat
                 thisExp.addData('earth_pause_1.started', globalClock.getTime())
                 # skip this Routine if its 'Skip if' condition is True
-                continueRoutine = continueRoutine and not ((button1 == False) or (lost == True))
+                continueRoutine = continueRoutine and not ((button1 == False) or (lost == True) or (trials_1.thisN == (trials_1.nReps - 1)))
                 # keep track of which components have finished
                 earth_pause_1Components = [earth_blank_4, continue_playing_message_4]
                 for thisComponent in earth_pause_1Components:
@@ -3024,7 +3206,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # update component parameters for each repeat
                 thisExp.addData('earth_pause_2.started', globalClock.getTime())
                 # skip this Routine if its 'Skip if' condition is True
-                continueRoutine = continueRoutine and not ((button2 == False) or (lost == True))
+                continueRoutine = continueRoutine and not ((button2 == False) or (lost == True) or (trials_2.thisN == (trials_2.nReps - 1)))
                 # keep track of which components have finished
                 earth_pause_2Components = [earth_blank_3, continue_playing_message_3]
                 for thisComponent in earth_pause_2Components:
@@ -3683,7 +3865,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # update component parameters for each repeat
                 thisExp.addData('earth_pause_3.started', globalClock.getTime())
                 # skip this Routine if its 'Skip if' condition is True
-                continueRoutine = continueRoutine and not ((button3 == False) or (lost == True))
+                continueRoutine = continueRoutine and not ((button3 == False) or (lost == True) or (trials_3.thisN == (trials_3.nReps - 1)))
                 # keep track of which components have finished
                 earth_pause_3Components = [earth_blank_2, continue_playing_message_2]
                 for thisComponent in earth_pause_3Components:
@@ -4687,7 +4869,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # update component parameters for each repeat
                 thisExp.addData('earth_pause_4.started', globalClock.getTime())
                 # skip this Routine if its 'Skip if' condition is True
-                continueRoutine = continueRoutine and not ((button4 == False) or (lost == True))
+                continueRoutine = continueRoutine and not ((button4 == False) or (lost == True) or (trials_4.thisN == (trials_4.nReps - 1)))
                 # keep track of which components have finished
                 earth_pause_4Components = [earth_blank, continue_playing_message]
                 for thisComponent in earth_pause_4Components:
