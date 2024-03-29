@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.2.3),
-    on March 28, 2024, at 23:04
+    on March 29, 2024, at 12:05
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -44,9 +44,6 @@ button3 = False
 button4 = False
 button5 = False
 
-#Duration of game details explained
-GameDet_dur = 5
-
 #Set number of repetitions  for each test
 global_rep_num = 1
 rep_num1 = global_rep_num
@@ -55,7 +52,7 @@ rep_num3 = global_rep_num
 rep_num4 = global_rep_num
 
 #Set number of trials for each test
-global_trial_num = 1
+global_trial_num = 3
 trial_num1 = global_trial_num
 trial_num2 = global_trial_num
 trial_num3 = global_trial_num
@@ -68,10 +65,10 @@ dur_test2 = global_dur_test
 dur_test3 = global_dur_test
 dur_test4 = global_dur_test
 
-dur_blank = 1
+dur_blank = 2
 
 #Duration of win/lose screens
-dur_end = 5
+dur_end = 3
 #Update display to show target object
 def selectTarget(objects, target):
     for obj in objects:
@@ -482,10 +479,10 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-2.0)
     button = visual.ButtonStim(win, 
-        text='By clicking here, you acknowledge understanding the epilepsy risk.', font='Arvo',
-        pos=(0, -0.35),
+        text='Click here to proceed', font='Arvo',
+        pos=(0, -0.30),
         letterHeight=0.03,
-        size=(0.5, 0.2), borderWidth=2.0,
+        size=(0.25, 0.125), borderWidth=2.0,
         fillColor=[1.0000, 0.9500, -1.0000], borderColor=[-1.0000, -1.0000, -1.0000],
         color='black', colorSpace='rgb',
         opacity=None,
@@ -514,7 +511,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
     explanation = visual.TextStim(win=win, name='explanation',
-        text='Aliens are attacking Earth and it is up to you to stop them using the power of your mind. Focus on the RED outlined spaceship to stop its attack and save Earth. Fail to focus on the target and the aliens will win.',
+        text="Aliens are attacking Earth and it's up to you to stop them. Using the power of your mind focus on the RED outlined spaceship to stop its attack. Fail to focus on the target and the aliens will win.",
         font='Open Sans',
         pos=(0, 0.33), height=0.05, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
@@ -540,7 +537,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     brain_animation = visual.MovieStim(
         win, name='brain_animation',
         filename='brain_animation.mp4', movieLib='ffpyplayer',
-        loop=False, volume=1.0, noAudio=False,
+        loop=True, volume=1.0, noAudio=False,
         pos=(0, 0), size=(1.5, 1), units=win.units,
         ori=0.0, anchor='center',opacity=None, contrast=1.0,
         depth=0
@@ -621,9 +618,9 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     )
     button_all.buttonClock = core.Clock()
     text = visual.TextStim(win=win, name='text',
-        text='Choose a level by clicking on one of the boxes',
-        font='Open Sans',
-        pos=(0, 0.47), height=0.045, wrapWidth=None, ori=0.0, 
+        text='Choose a level',
+        font='Open Sans ',
+        pos=(0, 0.43), height=0.06, wrapWidth=None, ori=0.0, 
         color=[1.0000, 1.0000, 1.0000], colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-6.0);
@@ -1621,6 +1618,8 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     continueRoutine = continueRoutine and not (start_exp_button == False)
     # reset button to account for continued clicks & clear times on/off
     button.reset()
+    # Run 'Begin Routine' code from code_6
+    warning_heading.bold = True
     # keep track of which components have finished
     WarningScreenComponents = [white_background, welcome_message, caution_sign, button, warning_heading]
     for thisComponent in WarningScreenComponents:
@@ -1683,7 +1682,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         # if welcome_message is active this frame...
         if welcome_message.status == STARTED:
             # update params
-            welcome_message.setText('\n\nThis experiment entails the observation of flickering objects. Individuals with a predisposition to photosensitive epilepsy or those possessing other visual sensitivities are advised to exercise utmost caution or to abstain from participation. It is imperative to acknowledge that we cannot assume liability for any discomfort or complications that may ensue.\n\n\n', log=False)
+            welcome_message.setText('\n\nThis experiment entails the observation of flickering objects. Individuals with a predisposition to epilepsy or other visual sensitivities are advised to exercise caution or to abstain from participation. We cannot assume liability for any discomfort or complications that may ensue.\n\n\n', log=False)
         
         # *caution_sign* updates
         
@@ -1986,6 +1985,8 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         button_t4.reset()
         # reset button_all to account for continued clicks & clear times on/off
         button_all.reset()
+        # Run 'Begin Routine' code from code_5
+        text.bold = True
         # keep track of which components have finished
         PickTestComponents = [brain_animation, button_t1, button_t2, button_t3, button_t4, button_all, text]
         for thisComponent in PickTestComponents:

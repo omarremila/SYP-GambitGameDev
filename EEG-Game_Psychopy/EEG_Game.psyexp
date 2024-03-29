@@ -1493,7 +1493,7 @@
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="False" valType="bool" updates="constant" name="forceEndRoutine"/>
-        <Param val="False" valType="bool" updates="None" name="loop"/>
+        <Param val="True" valType="bool" updates="None" name="loop"/>
         <Param val="brain_animation.mp4" valType="file" updates="constant" name="movie"/>
         <Param val="brain_animation" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
@@ -1693,13 +1693,13 @@
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="None" valType="str" updates="constant" name="flip"/>
-        <Param val="Open Sans" valType="str" updates="constant" name="font"/>
+        <Param val="Open Sans " valType="str" updates="constant" name="font"/>
         <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
-        <Param val="0.045" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="0.06" valType="num" updates="constant" name="letterHeight"/>
         <Param val="text" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(0, 0.47)" valType="list" updates="constant" name="pos"/>
+        <Param val="(0, 0.43)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
@@ -1707,7 +1707,7 @@
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="Choose a level by clicking on one of the boxes" valType="str" updates="constant" name="text"/>
+        <Param val="Choose a level" valType="str" updates="constant" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
@@ -1717,7 +1717,7 @@
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="text.bold = True" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Py" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -1974,7 +1974,7 @@
         <Param val="False" valType="bool" updates="None" name="useWindowParams"/>
       </RoutineSettingsComponent>
       <CodeComponent name="code" plugin="None">
-        <Param val="#Intialize all buttons to False&amp;#10;return_home = True&amp;#10;about_exp_button = False&amp;#10;start_exp_button = False&amp;#10;button1 = False&amp;#10;button2 = False&amp;#10;button3 = False&amp;#10;button4 = False&amp;#10;button5 = False&amp;#10;&amp;#10;#Duration of game details explained&amp;#10;GameDet_dur = 5&amp;#10;&amp;#10;#Set number of repetitions  for each test&amp;#10;global_rep_num = 1&amp;#10;rep_num1 = global_rep_num&amp;#10;rep_num2 = global_rep_num&amp;#10;rep_num3 = global_rep_num&amp;#10;rep_num4 = global_rep_num&amp;#10;&amp;#10;#Set number of trials for each test&amp;#10;global_trial_num = 1&amp;#10;trial_num1 = global_trial_num&amp;#10;trial_num2 = global_trial_num&amp;#10;trial_num3 = global_trial_num&amp;#10;trial_num4 = global_trial_num&amp;#10;&amp;#10;#Set duration of repetitions for each test&amp;#10;global_dur_test = 5&amp;#10;dur_test1 = global_dur_test&amp;#10;dur_test2 = global_dur_test&amp;#10;dur_test3 = global_dur_test&amp;#10;dur_test4 = global_dur_test&amp;#10;&amp;#10;dur_blank = 1&amp;#10;&amp;#10;#Duration of win/lose screens&amp;#10;dur_end = 5&amp;#10;#Update display to show target object&amp;#10;def selectTarget(objects, target):&amp;#10;    for obj in objects:&amp;#10;        if obj == target:&amp;#10;            obj.lineColor = 'red'&amp;#10;        else:&amp;#10;            obj.lineColor = 'white'&amp;#10;&amp;#10;# Update opacities based on current frame number for each stimulus&amp;#10;def flickerObjects(objects, freqs, frameN):&amp;#10;    for i in range(len(objects)): #loop through all objects&amp;#10;        frames_per_cycle = 60 // freqs[i]&amp;#10;        objects[i].opacity = (((frameN) % frames_per_cycle) &lt; (frames_per_cycle / 2))&amp;#10;&amp;#10;" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="#Intialize all buttons to False&amp;#10;return_home = True&amp;#10;about_exp_button = False&amp;#10;start_exp_button = False&amp;#10;button1 = False&amp;#10;button2 = False&amp;#10;button3 = False&amp;#10;button4 = False&amp;#10;button5 = False&amp;#10;&amp;#10;#Set number of repetitions  for each test&amp;#10;global_rep_num = 1&amp;#10;rep_num1 = global_rep_num&amp;#10;rep_num2 = global_rep_num&amp;#10;rep_num3 = global_rep_num&amp;#10;rep_num4 = global_rep_num&amp;#10;&amp;#10;#Set number of trials for each test&amp;#10;global_trial_num = 3&amp;#10;trial_num1 = global_trial_num&amp;#10;trial_num2 = global_trial_num&amp;#10;trial_num3 = global_trial_num&amp;#10;trial_num4 = global_trial_num&amp;#10;&amp;#10;#Set duration of repetitions for each test&amp;#10;global_dur_test = 5&amp;#10;dur_test1 = global_dur_test&amp;#10;dur_test2 = global_dur_test&amp;#10;dur_test3 = global_dur_test&amp;#10;dur_test4 = global_dur_test&amp;#10;&amp;#10;dur_blank = 2&amp;#10;&amp;#10;#Duration of win/lose screens&amp;#10;dur_end = 3&amp;#10;#Update display to show target object&amp;#10;def selectTarget(objects, target):&amp;#10;    for obj in objects:&amp;#10;        if obj == target:&amp;#10;            obj.lineColor = 'red'&amp;#10;        else:&amp;#10;            obj.lineColor = 'white'&amp;#10;&amp;#10;# Update opacities based on current frame number for each stimulus&amp;#10;def flickerObjects(objects, freqs, frameN):&amp;#10;    for i in range(len(objects)): #loop through all objects&amp;#10;        frames_per_cycle = 60 // freqs[i]&amp;#10;        objects[i].opacity = (((frameN) % frames_per_cycle) &lt; (frames_per_cycle / 2))&amp;#10;&amp;#10;" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="/* Syntax Error: Fix Python code */" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
@@ -2055,7 +2055,7 @@
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="&amp;#10;&amp;#10;This experiment entails the observation of flickering objects. Individuals with a predisposition to photosensitive epilepsy or those possessing other visual sensitivities are advised to exercise utmost caution or to abstain from participation. It is imperative to acknowledge that we cannot assume liability for any discomfort or complications that may ensue.&amp;#10;&amp;#10;&amp;#10;" valType="str" updates="set every frame" name="text"/>
+        <Param val="&amp;#10;&amp;#10;This experiment entails the observation of flickering objects. Individuals with a predisposition to epilepsy or other visual sensitivities are advised to exercise caution or to abstain from participation. We cannot assume liability for any discomfort or complications that may ensue.&amp;#10;&amp;#10;&amp;#10;" valType="str" updates="set every frame" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
@@ -2107,17 +2107,17 @@
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
         <Param val="" valType="num" updates="constant" name="padding"/>
-        <Param val="(0, -0.35)" valType="list" updates="constant" name="pos"/>
+        <Param val="(0, -0.30)" valType="list" updates="constant" name="pos"/>
         <Param val="every click" valType="str" updates="None" name="save"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="(0.5, 0.2)" valType="list" updates="constant" name="size"/>
+        <Param val="(0.25, 0.125)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="By clicking here, you acknowledge understanding the epilepsy risk." valType="str" updates="constant" name="text"/>
+        <Param val="Click here to proceed" valType="str" updates="constant" name="text"/>
         <Param val="button onset" valType="str" updates="constant" name="timeRelativeTo"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
       </ButtonComponent>
@@ -2152,7 +2152,7 @@
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="warning_heading.bold = True" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Py" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -2921,7 +2921,7 @@
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="Aliens are attacking Earth and it is up to you to stop them using the power of your mind. Focus on the RED outlined spaceship to stop its attack and save Earth. Fail to focus on the target and the aliens will win." valType="str" updates="constant" name="text"/>
+        <Param val="Aliens are attacking Earth and it's up to you to stop them. Using the power of your mind focus on the RED outlined spaceship to stop its attack. Fail to focus on the target and the aliens will win." valType="str" updates="constant" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
