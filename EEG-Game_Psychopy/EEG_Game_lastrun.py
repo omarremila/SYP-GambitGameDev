@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.2.3),
-    on March 29, 2024, at 12:05
+    on March 31, 2024, at 11:17
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -43,6 +43,7 @@ button2 = False
 button3 = False
 button4 = False
 button5 = False
+lose = False
 
 #Set number of repetitions  for each test
 global_rep_num = 1
@@ -52,7 +53,7 @@ rep_num3 = global_rep_num
 rep_num4 = global_rep_num
 
 #Set number of trials for each test
-global_trial_num = 3
+global_trial_num = 2
 trial_num1 = global_trial_num
 trial_num2 = global_trial_num
 trial_num3 = global_trial_num
@@ -69,21 +70,44 @@ dur_blank = 2
 
 #Duration of win/lose screens
 dur_end = 3
+
 #Update display to show target object
 def selectTarget(objects, target):
-    for obj in objects:
-        if obj == target:
-            obj.lineColor = 'red'
+    for i in range(len(objects)):
+        if i == (target - 1):
+            objects[i].lineColor = 'red'
         else:
-            obj.lineColor = 'white'
+            objects[i].lineColor = 'white'
 
 # Update opacities based on current frame number for each stimulus
 def flickerObjects(objects, freqs, frameN):
     for i in range(len(objects)): #loop through all objects
         frames_per_cycle = 60 // freqs[i]
         objects[i].opacity = (((frameN) % frames_per_cycle) < (frames_per_cycle / 2))
-
-
+        
+#Check if frequency is correct range     
+def compareFreq(EEGdata, freq):
+    DELTA = 0
+    THETA = 1
+    ALPHA = 2
+    BETA = 3
+    GAMMA = 4
+    
+    freq_band = EEGdata.index(max(EEGdata))
+    
+    if (freq_band == DELTA) and (0 <= freq < 4):
+        return True 
+    elif (freq_band == THETA) and (4 <= freq < 8):
+        return True 
+    elif (freq_band == ALPHA) and (8 <= freq < 12):
+        return True 
+    elif (freq_band == BETA) and (12 <= freq < 30):
+        return True
+    elif (freq_band == GAMMA) and (freq >= 30):
+        return True
+    else:
+        return False
+     
 # --- Setup global variables (available in all functions) ---
 # Ensure that relative paths start from the same directory as this script
 _thisDir = os.path.dirname(os.path.abspath(__file__))
@@ -1987,6 +2011,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         button_all.reset()
         # Run 'Begin Routine' code from code_5
         text.bold = True
+        lose = False
         # keep track of which components have finished
         PickTestComponents = [brain_animation, button_t1, button_t2, button_t3, button_t4, button_all, text]
         for thisComponent in PickTestComponents:
@@ -2300,8 +2325,6 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         else:
            return_to_homepage.addData('button_all.timesOn', "")
            return_to_homepage.addData('button_all.timesOff', "")
-        # Run 'End Routine' code from code_5
-        lost = False
         # the Routine "PickTest" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
@@ -2368,13 +2391,17 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # update component parameters for each repeat
                 thisExp.addData('test_1.started', globalClock.getTime())
                 # skip this Routine if its 'Skip if' condition is True
-                continueRoutine = continueRoutine and not ((button1 == False) or (lost == True))
+                continueRoutine = continueRoutine and not ((button1 == False) or (lose == True))
                 # Run 'Begin Routine' code from test_1_code
+                #Start aquiring data
+                #startTest(dur_test1)
+                
                 home_button = False
+                
                 # Frequencies for each trial
-                freq_trials = [[1], #Trial 1 frequency
-                            [2],   #Trial 2 frequency
-                            [15],  #Trial 3 frequency
+                freq_trials = [[15], #Trial 1 frequency
+                            [16],   #Trial 2 frequency
+                            [1],  #Trial 3 frequency
                             [15],  #Trial 4 frequency
                             [15],  #Trial 5 frequency
                             [15],  #Trial 6 frequency
@@ -2383,20 +2410,22 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                             [15],  #Trial 9 frequency
                             [15]]  #Trial 10 frequency
                 
+                loop_num = trials_1.thisN
                 #Select frequencies for current trial
-                freq_curr_trial = freq_trials[trials_1.thisN]
+                freq_curr_trial = freq_trials[loop_num]
                 
                 #Target object for user to look at for each trial
-                targets = [boxL1_1, boxL1_1, boxL1_1, boxL1_1, boxL1_1,
-                           boxL1_1, boxL1_1, boxL1_1, boxL1_1, boxL1_1]
-                           
+                targets = [1, 1, 1, 1, 1,
+                           1, 1, 1, 1, 1]
+                
+                
                 #All objects
                 objects = [boxL1_1]
                 
                 #Select target object for user to look at
-                selectTarget(objects, targets[trials_1.thisN]) 
+                selectTarget(objects, targets[loop_num]) 
                 
-                test_1_mess.text = 'Level 1, Round ' + str(trials_1.thisN + 1)
+                test_1_mess.text = 'Level 1, Round ' + str(loop_num + 1)
                 # keep track of which components have finished
                 test_1Components = [earth1, boxL1_1, shipL1_1, Attack_message, test_1_mess]
                 for thisComponent in test_1Components:
@@ -2616,6 +2645,15 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                     if hasattr(thisComponent, "setAutoDraw"):
                         thisComponent.setAutoDraw(False)
                 thisExp.addData('test_1.stopped', globalClock.getTime())
+                # Run 'End Routine' code from test_1_code
+                if button1 == True and lose == False:
+                    #EEGdata = getEEGData()
+                    EEGdata = [6, 2, 3, 8, 0.25]
+                    #freq = [15, 15, 1]
+                    #freq = freq_curr_trial[targets[loop_num] - 1]
+                    lose = not compareFreq(EEGdata, freq_curr_trial[targets[trials_1.thisN] - 1])
+                    #compareFreq(EEGdata, freq[trials_1.thisN])
+                
                 # the Routine "test_1" was not non-slip safe, so reset the non-slip timer
                 routineTimer.reset()
                 
@@ -2624,7 +2662,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # update component parameters for each repeat
                 thisExp.addData('earth_pause_1.started', globalClock.getTime())
                 # skip this Routine if its 'Skip if' condition is True
-                continueRoutine = continueRoutine and not ((button1 == False) or (lost == True) or (trials_1.thisN == (trials_1.nReps - 1)))
+                continueRoutine = continueRoutine and not ((button1 == False) or (lose == True) or (trials_1.thisN == (trials_1.nReps - 1)))
                 # keep track of which components have finished
                 earth_pause_1Components = [earth_blank_4, continue_playing_message_4]
                 for thisComponent in earth_pause_1Components:
@@ -2821,14 +2859,17 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # update component parameters for each repeat
                 thisExp.addData('test_2.started', globalClock.getTime())
                 # skip this Routine if its 'Skip if' condition is True
-                continueRoutine = continueRoutine and not ((button2 == False) or (lost == True))
+                continueRoutine = continueRoutine and not ((button2 == False) or (lose == True))
                 # Run 'Begin Routine' code from test_2_code
+                #Start aquiring data
+                #startTest(dur_test2)
+                
                 #Target object for user to look at for each trial
-                targets = [boxL2_1, boxL2_2, boxL2_3, boxL2_1, boxL2_3,
-                           boxL2_1, boxL2_1, boxL2_2, boxL2_3, boxL2_1]
+                targets = [1, 2, 3, 1, 1,
+                           1, 1, 1, 1, 1]
                 
                 # Frequencies for each object for every trial
-                freq_trials = [[5, 10 , 15 ], #Trial 1 frequencies
+                freq_trials = [[2, 10 , 15 ], #Trial 1 frequencies
                                [10 , 5 , 2 ], #Trial 2 frequencies
                                [2 , 5 , 2 ], #Trial 3 frequencies
                                [6 , 4 , 30], #Trial 4 frequencies
@@ -3199,6 +3240,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                     if hasattr(thisComponent, "setAutoDraw"):
                         thisComponent.setAutoDraw(False)
                 thisExp.addData('test_2.stopped', globalClock.getTime())
+                # Run 'End Routine' code from test_2_code
+                if button2 == True and lose == False:
+                    #EEGdata = getEEGData()
+                    EEGdata = [6, 2, 3, 4, 3]
+                
+                    lose = not compareFreq(EEGdata, freq_curr_trial[targets[trials_2.thisN] - 1])
+                
                 # the Routine "test_2" was not non-slip safe, so reset the non-slip timer
                 routineTimer.reset()
                 
@@ -3207,7 +3255,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # update component parameters for each repeat
                 thisExp.addData('earth_pause_2.started', globalClock.getTime())
                 # skip this Routine if its 'Skip if' condition is True
-                continueRoutine = continueRoutine and not ((button2 == False) or (lost == True) or (trials_2.thisN == (trials_2.nReps - 1)))
+                continueRoutine = continueRoutine and not ((button2 == False) or (lose == True) or (trials_2.thisN == (trials_2.nReps - 1)))
                 # keep track of which components have finished
                 earth_pause_2Components = [earth_blank_3, continue_playing_message_3]
                 for thisComponent in earth_pause_2Components:
@@ -3404,11 +3452,14 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # update component parameters for each repeat
                 thisExp.addData('test_3.started', globalClock.getTime())
                 # skip this Routine if its 'Skip if' condition is True
-                continueRoutine = continueRoutine and not ((button3 == False) or (lost == True))
+                continueRoutine = continueRoutine and not ((button3 == False) or (lose == True))
                 # Run 'Begin Routine' code from test_3_code
+                #Start aquiring data
+                #startTest(dur_test3)
+                
                 #Target object for user to look at for each trial
-                targets = [boxL3_1, boxL3_2, boxL3_3, boxL3_4, boxL3_1,
-                           boxL3_1, boxL3_2, boxL3_4, boxL3_2, boxL3_1]
+                targets = [4, 2, 3, 4, 1,
+                           1, 1, 1, 1, 1]
                            
                 # Frequencies for each object for every trial
                 freq_trials = [[10, 5,
@@ -3858,6 +3909,12 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                     if hasattr(thisComponent, "setAutoDraw"):
                         thisComponent.setAutoDraw(False)
                 thisExp.addData('test_3.stopped', globalClock.getTime())
+                # Run 'End Routine' code from test_3_code
+                if button3 == True and lose == False:
+                    #EEGdata = getEEGData()
+                    EEGdata = [6, 2, 3, 4, 3]
+                    lose = not compareFreq(EEGdata, freq_curr_trial[targets[trials_3.thisN] - 1])
+                    #lose = not compareFreq(EEGdata, 15)
                 # the Routine "test_3" was not non-slip safe, so reset the non-slip timer
                 routineTimer.reset()
                 
@@ -3866,7 +3923,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # update component parameters for each repeat
                 thisExp.addData('earth_pause_3.started', globalClock.getTime())
                 # skip this Routine if its 'Skip if' condition is True
-                continueRoutine = continueRoutine and not ((button3 == False) or (lost == True) or (trials_3.thisN == (trials_3.nReps - 1)))
+                continueRoutine = continueRoutine and not ((button3 == False) or (lose == True) or (trials_3.thisN == (trials_3.nReps - 1)))
                 # keep track of which components have finished
                 earth_pause_3Components = [earth_blank_2, continue_playing_message_2]
                 for thisComponent in earth_pause_3Components:
@@ -4063,11 +4120,14 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # update component parameters for each repeat
                 thisExp.addData('test_4.started', globalClock.getTime())
                 # skip this Routine if its 'Skip if' condition is True
-                continueRoutine = continueRoutine and not ((button4 == False) or (lost == True))
+                continueRoutine = continueRoutine and not ((button4 == False) or (lose == True))
                 # Run 'Begin Routine' code from test_4_code
+                #Start aquiring data
+                #startTest(dur_test4)
+                
                 #Target object for user to look at for each trial
-                targets = [boxL4_1, boxL4_2, boxL4_3, boxL4_4, boxL4_5,
-                           boxL4_6, boxL4_7, boxL4_8, boxL4_9, boxL4_5]
+                targets = [2, 2, 3, 4, 5,
+                           6, 7, 8, 9, 1]
                 
                 # Frequencies for each object
                 freq_trials = [[10, 5, 2,
@@ -4860,8 +4920,11 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                         thisComponent.setAutoDraw(False)
                 thisExp.addData('test_4.stopped', globalClock.getTime())
                 # Run 'End Routine' code from test_4_code
-                if button4 == True:
-                    lost = True
+                if button4 == True and lose == False:
+                    #EEGdata = getEEGData()
+                    EEGdata = [6, 10, 3, 8, 3]
+                    lose = not compareFreq(EEGdata, freq_curr_trial[targets[trials_4.thisN] - 1])
+                    #lose = not compareFreq(EEGdata, 5)
                 # the Routine "test_4" was not non-slip safe, so reset the non-slip timer
                 routineTimer.reset()
                 
@@ -4870,7 +4933,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # update component parameters for each repeat
                 thisExp.addData('earth_pause_4.started', globalClock.getTime())
                 # skip this Routine if its 'Skip if' condition is True
-                continueRoutine = continueRoutine and not ((button4 == False) or (lost == True) or (trials_4.thisN == (trials_4.nReps - 1)))
+                continueRoutine = continueRoutine and not ((button4 == False) or (lose == True) or (trials_4.thisN == (trials_4.nReps - 1)))
                 # keep track of which components have finished
                 earth_pause_4Components = [earth_blank, continue_playing_message]
                 for thisComponent in earth_pause_4Components:
@@ -5009,7 +5072,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         # update component parameters for each repeat
         thisExp.addData('earth_win.started', globalClock.getTime())
         # skip this Routine if its 'Skip if' condition is True
-        continueRoutine = continueRoutine and not (lost == True)
+        continueRoutine = continueRoutine and not (lose == True)
         # keep track of which components have finished
         earth_winComponents = [earth_win_2, win_message]
         for thisComponent in earth_winComponents:
@@ -5134,7 +5197,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         # update component parameters for each repeat
         thisExp.addData('earth_lose.started', globalClock.getTime())
         # skip this Routine if its 'Skip if' condition is True
-        continueRoutine = continueRoutine and not (lost == False)
+        continueRoutine = continueRoutine and not (lose == False)
         # keep track of which components have finished
         earth_loseComponents = [earth_lose_2, lose_message]
         for thisComponent in earth_loseComponents:
@@ -5259,14 +5322,12 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         # update component parameters for each repeat
         thisExp.addData('reset_buttons.started', globalClock.getTime())
         # Run 'Begin Routine' code from reset_button_bool
-        #duck
         button1 = False
         button2 = False
         button3 = False
         button4 = False
         button5 = False
         start_exp_button = False
-        lost = False
         # keep track of which components have finished
         reset_buttonsComponents = []
         for thisComponent in reset_buttonsComponents:
