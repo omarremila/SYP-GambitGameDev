@@ -2537,7 +2537,7 @@
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
         <Param val="False" valType="bool" updates="constant" name="flipVert"/>
-        <Param val="hefr.jpeg" valType="file" updates="constant" name="image"/>
+        <Param val="Earth_lost.jpeg" valType="file" updates="constant" name="image"/>
         <Param val="linear" valType="str" updates="constant" name="interpolate"/>
         <Param val="" valType="str" updates="constant" name="mask"/>
         <Param val="earth_lose_2" valType="code" updates="None" name="name"/>

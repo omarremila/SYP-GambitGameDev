@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.2.3),
-    on April 01, 2024, at 20:45
+    on April 02, 2024, at 14:28
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -1123,7 +1123,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     earth_lose_2 = visual.ImageStim(
         win=win,
         name='earth_lose_2', 
-        image='hefr.jpeg', mask=None, anchor='center',
+        image='Earth_lost.jpeg', mask=None, anchor='center',
         ori=0.0, pos=(-0.10, 0), size=(1.75, 1),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
