@@ -133,7 +133,7 @@
         <Param val="(0.1, 0)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="rectangle" valType="str" updates="None" name="shape"/>
-        <Param val="(0.15, 0.075)" valType="list" updates="constant" name="size"/>
+        <Param val="box_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -160,7 +160,7 @@
         <Param val="0" valType="num" updates="constant" name="ori"/>
         <Param val="(0.1, 0)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
+        <Param val="ship_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -187,7 +187,7 @@
         <Param val="(0.35, 0)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="rectangle" valType="str" updates="None" name="shape"/>
-        <Param val="(0.15, 0.075)" valType="list" updates="constant" name="size"/>
+        <Param val="box_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -214,7 +214,7 @@
         <Param val="0" valType="num" updates="constant" name="ori"/>
         <Param val="(0.35, 0)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
+        <Param val="ship_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -241,7 +241,7 @@
         <Param val="(0.6, 0)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="rectangle" valType="str" updates="None" name="shape"/>
-        <Param val="(0.15, 0.075)" valType="list" updates="constant" name="size"/>
+        <Param val="box_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -268,7 +268,7 @@
         <Param val="0" valType="num" updates="constant" name="ori"/>
         <Param val="(0.6, 0)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
+        <Param val="ship_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -440,7 +440,7 @@
         <Param val="(0.35, 0)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="rectangle" valType="str" updates="None" name="shape"/>
-        <Param val="(0.15, 0.075)" valType="list" updates="constant" name="size"/>
+        <Param val="box_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -467,7 +467,7 @@
         <Param val="0" valType="num" updates="constant" name="ori"/>
         <Param val="(0.35, 0)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
+        <Param val="ship_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -605,7 +605,7 @@
         <Param val="(0.1, 0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="rectangle" valType="str" updates="None" name="shape"/>
-        <Param val="(0.15, 0.075)" valType="list" updates="constant" name="size"/>
+        <Param val="box_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -632,7 +632,7 @@
         <Param val="0" valType="num" updates="constant" name="ori"/>
         <Param val="(0.1, 0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
+        <Param val="ship_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -659,7 +659,7 @@
         <Param val="(0.6, 0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="rectangle" valType="str" updates="None" name="shape"/>
-        <Param val="(0.15, 0.075)" valType="list" updates="constant" name="size"/>
+        <Param val="box_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -686,7 +686,7 @@
         <Param val="0" valType="num" updates="constant" name="ori"/>
         <Param val="(0.6, 0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
+        <Param val="ship_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -713,7 +713,7 @@
         <Param val="(0.1, -0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="rectangle" valType="str" updates="None" name="shape"/>
-        <Param val="(0.15, 0.075)" valType="list" updates="constant" name="size"/>
+        <Param val="box_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -740,7 +740,7 @@
         <Param val="0" valType="num" updates="constant" name="ori"/>
         <Param val="(0.1, -0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
+        <Param val="ship_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -767,7 +767,7 @@
         <Param val="(0.6, -0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="rectangle" valType="str" updates="None" name="shape"/>
-        <Param val="(0.15, 0.075)" valType="list" updates="constant" name="size"/>
+        <Param val="box_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -794,7 +794,7 @@
         <Param val="0" valType="num" updates="constant" name="ori"/>
         <Param val="(0.6, -0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
+        <Param val="ship_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -932,7 +932,7 @@
         <Param val="(0.1, 0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="rectangle" valType="str" updates="None" name="shape"/>
-        <Param val="(0.15, 0.075)" valType="list" updates="constant" name="size"/>
+        <Param val="box_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -959,7 +959,7 @@
         <Param val="0" valType="num" updates="constant" name="ori"/>
         <Param val="(0.1, 0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
+        <Param val="ship_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -986,7 +986,7 @@
         <Param val="(0.35, 0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="rectangle" valType="str" updates="None" name="shape"/>
-        <Param val="(0.15, 0.075)" valType="list" updates="constant" name="size"/>
+        <Param val="box_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -1013,7 +1013,7 @@
         <Param val="0" valType="num" updates="constant" name="ori"/>
         <Param val="(0.35, 0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
+        <Param val="ship_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -1040,7 +1040,7 @@
         <Param val="(0.6, 0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="rectangle" valType="str" updates="None" name="shape"/>
-        <Param val="(0.15, 0.075)" valType="list" updates="constant" name="size"/>
+        <Param val="box_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -1067,7 +1067,7 @@
         <Param val="0" valType="num" updates="constant" name="ori"/>
         <Param val="(0.6, 0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
+        <Param val="ship_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -1094,7 +1094,7 @@
         <Param val="(0.1, 0)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="rectangle" valType="str" updates="None" name="shape"/>
-        <Param val="(0.15, 0.075)" valType="list" updates="constant" name="size"/>
+        <Param val="box_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -1121,7 +1121,7 @@
         <Param val="0" valType="num" updates="constant" name="ori"/>
         <Param val="(0.1, 0)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
+        <Param val="ship_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -1148,7 +1148,7 @@
         <Param val="(0.35, 0)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="rectangle" valType="str" updates="None" name="shape"/>
-        <Param val="(0.15, 0.075)" valType="list" updates="constant" name="size"/>
+        <Param val="box_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -1175,7 +1175,7 @@
         <Param val="0" valType="num" updates="constant" name="ori"/>
         <Param val="(0.35, 0)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
+        <Param val="ship_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -1202,7 +1202,7 @@
         <Param val="(0.6, 0)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="rectangle" valType="str" updates="None" name="shape"/>
-        <Param val="(0.15, 0.075)" valType="list" updates="constant" name="size"/>
+        <Param val="box_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -1229,7 +1229,7 @@
         <Param val="0" valType="num" updates="constant" name="ori"/>
         <Param val="(0.6, 0)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
+        <Param val="ship_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -1256,7 +1256,7 @@
         <Param val="(0.1, -0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="rectangle" valType="str" updates="None" name="shape"/>
-        <Param val="(0.15, 0.075)" valType="list" updates="constant" name="size"/>
+        <Param val="box_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -1283,7 +1283,7 @@
         <Param val="0" valType="num" updates="constant" name="ori"/>
         <Param val="(0.1, -0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
+        <Param val="ship_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -1310,7 +1310,7 @@
         <Param val="(0.35, -0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="rectangle" valType="str" updates="None" name="shape"/>
-        <Param val="(0.15, 0.075)" valType="list" updates="constant" name="size"/>
+        <Param val="box_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -1337,7 +1337,7 @@
         <Param val="0" valType="num" updates="constant" name="ori"/>
         <Param val="(0.35, -0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
+        <Param val="ship_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -1364,7 +1364,7 @@
         <Param val="(0.6, -0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="rectangle" valType="str" updates="None" name="shape"/>
-        <Param val="(0.15, 0.075)" valType="list" updates="constant" name="size"/>
+        <Param val="box_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -1391,7 +1391,7 @@
         <Param val="0" valType="num" updates="constant" name="ori"/>
         <Param val="(0.6, -0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
+        <Param val="ship_size" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -1974,7 +1974,7 @@
         <Param val="False" valType="bool" updates="None" name="useWindowParams"/>
       </RoutineSettingsComponent>
       <CodeComponent name="code" plugin="None">
-        <Param val="#Intialize all buttons to False&amp;#10;return_home = True&amp;#10;about_exp_button = False&amp;#10;start_exp_button = False&amp;#10;button1 = False&amp;#10;button2 = False&amp;#10;button3 = False&amp;#10;button4 = False&amp;#10;button5 = False&amp;#10;lose = False&amp;#10;&amp;#10;#Set number of repetitions  for each test&amp;#10;global_rep_num = 1&amp;#10;rep_num1 = global_rep_num&amp;#10;rep_num2 = global_rep_num&amp;#10;rep_num3 = global_rep_num&amp;#10;rep_num4 = global_rep_num&amp;#10;&amp;#10;#Set number of trials for each test&amp;#10;global_trial_num = 2&amp;#10;trial_num1 = global_trial_num&amp;#10;trial_num2 = global_trial_num&amp;#10;trial_num3 = global_trial_num&amp;#10;trial_num4 = global_trial_num&amp;#10;&amp;#10;#Set duration of repetitions for each test&amp;#10;global_dur_test = 5&amp;#10;dur_test1 = global_dur_test&amp;#10;dur_test2 = global_dur_test&amp;#10;dur_test3 = global_dur_test&amp;#10;dur_test4 = global_dur_test&amp;#10;&amp;#10;dur_blank = 2&amp;#10;&amp;#10;#Duration of win/lose screens&amp;#10;dur_end = 3&amp;#10;&amp;#10;#Update display to show target object&amp;#10;def selectTarget(objects, target):&amp;#10;    for i in range(len(objects)):&amp;#10;        if i == (target - 1):&amp;#10;            objects[i].lineColor = 'red'&amp;#10;        else:&amp;#10;            objects[i].lineColor = 'white'&amp;#10;&amp;#10;# Update opacities based on current frame number for each stimulus&amp;#10;def flickerObjects(objects, freqs, frameN):&amp;#10;    for i in range(len(objects)): #loop through all objects&amp;#10;        frames_per_cycle = 60 // freqs[i]&amp;#10;        objects[i].opacity = (((frameN) % frames_per_cycle) &lt; (frames_per_cycle / 2))&amp;#10;        &amp;#10;#Check if frequency is correct range     &amp;#10;def compareFreq(EEGdata, freq):&amp;#10;    DELTA = 0&amp;#10;    THETA = 1&amp;#10;    ALPHA = 2&amp;#10;    BETA = 3&amp;#10;    GAMMA = 4&amp;#10;    &amp;#10;    freq_band = EEGdata.index(max(EEGdata))&amp;#10;    &amp;#10;    if (freq_band == DELTA) and (0 &lt;= freq &lt; 4):&amp;#10;        return True &amp;#10;    elif (freq_band == THETA) and (4 &lt;= freq &lt; 8):&amp;#10;        return True &amp;#10;    elif (freq_band == ALPHA) and (8 &lt;= freq &lt; 12):&amp;#10;        return True &amp;#10;    elif (freq_band == BETA) and (12 &lt;= freq &lt; 30):&amp;#10;        return True&amp;#10;    elif (freq_band == GAMMA) and (freq &gt;= 30):&amp;#10;        return True&amp;#10;    else:&amp;#10;        return False&amp;#10;     " valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="#Set number of repetitions  for each test&amp;#10;global_rep_num = 1&amp;#10;rep_num1 = global_rep_num&amp;#10;rep_num2 = global_rep_num&amp;#10;rep_num3 = global_rep_num&amp;#10;rep_num4 = global_rep_num&amp;#10;&amp;#10;#Set number of trials for each test&amp;#10;global_trial_num = 2&amp;#10;trial_num1 = global_trial_num&amp;#10;trial_num2 = global_trial_num&amp;#10;trial_num3 = global_trial_num&amp;#10;trial_num4 = global_trial_num&amp;#10;&amp;#10;#Set duration of repetitions for each test&amp;#10;global_dur_test = 5&amp;#10;dur_test1 = global_dur_test&amp;#10;dur_test2 = global_dur_test&amp;#10;dur_test3 = global_dur_test&amp;#10;dur_test4 = global_dur_test&amp;#10;&amp;#10;#Size of spaceships and boxes sorrounding them&amp;#10;ship_size = (0.15, 0.15)&amp;#10;box_size = (0.15, 0.075)&amp;#10;&amp;#10;#Duration after a repetition&amp;#10;dur_blank = 2&amp;#10;&amp;#10;#Duration of win/lose screens&amp;#10;dur_end = 3&amp;#10;&amp;#10;#Intialize all buttons to False&amp;#10;return_home = True&amp;#10;about_exp_button = False&amp;#10;start_exp_button = False&amp;#10;button1 = False&amp;#10;button2 = False&amp;#10;button3 = False&amp;#10;button4 = False&amp;#10;button5 = False&amp;#10;lose = False&amp;#10;&amp;#10;#Update display to show target object&amp;#10;def selectTarget(objects, target):&amp;#10;    for i in range(len(objects)):&amp;#10;        if i == (target - 1):&amp;#10;            objects[i].lineColor = 'red'&amp;#10;        else:&amp;#10;            objects[i].lineColor = 'white'&amp;#10;&amp;#10;# Update opacities based on current frame number for each stimulus&amp;#10;def flickerObjects(objects, freqs, frameN):&amp;#10;    for i in range(len(objects)): #loop through all objects&amp;#10;        frames_per_cycle = 60 // freqs[i]&amp;#10;        objects[i].opacity = (((frameN) % frames_per_cycle) &lt; (frames_per_cycle / 2))&amp;#10;        &amp;#10;#Check if frequency is correct range     &amp;#10;def compareFreq(EEGdata, freq):&amp;#10;    DELTA = 0&amp;#10;    THETA = 1&amp;#10;    ALPHA = 2&amp;#10;    BETA = 3&amp;#10;    GAMMA = 4&amp;#10;    &amp;#10;    freq_band = EEGdata.index(max(EEGdata))&amp;#10;    &amp;#10;    if (freq_band == DELTA) and (0 &lt;= freq &lt; 4):&amp;#10;        return True &amp;#10;    elif (freq_band == THETA) and (4 &lt;= freq &lt; 8):&amp;#10;        return True &amp;#10;    elif (freq_band == ALPHA) and (8 &lt;= freq &lt; 12):&amp;#10;        return True &amp;#10;    elif (freq_band == BETA) and (12 &lt;= freq &lt; 30):&amp;#10;        return True&amp;#10;    elif (freq_band == GAMMA) and (freq &gt;= 30):&amp;#10;        return True&amp;#10;    else:&amp;#10;        return False&amp;#10;     " valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="/* Syntax Error: Fix Python code */" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.2.3),
-    on April 02, 2024, at 14:28
+    on April 03, 2024, at 00:42
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -34,17 +34,6 @@ import psychopy.iohub as io
 from psychopy.hardware import keyboard
 
 # Run 'Before Experiment' code from code
-#Intialize all buttons to False
-return_home = True
-about_exp_button = False
-start_exp_button = False
-button1 = False
-button2 = False
-button3 = False
-button4 = False
-button5 = False
-lose = False
-
 #Set number of repetitions  for each test
 global_rep_num = 1
 rep_num1 = global_rep_num
@@ -66,10 +55,26 @@ dur_test2 = global_dur_test
 dur_test3 = global_dur_test
 dur_test4 = global_dur_test
 
+#Size of spaceships and boxes sorrounding them
+ship_size = (0.15, 0.15)
+box_size = (0.15, 0.075)
+
+#Duration after a repetition
 dur_blank = 2
 
 #Duration of win/lose screens
 dur_end = 3
+
+#Intialize all buttons to False
+return_home = True
+about_exp_button = False
+start_exp_button = False
+button1 = False
+button2 = False
+button3 = False
+button4 = False
+button5 = False
+lose = False
 
 #Update display to show target object
 def selectTarget(objects, target):
@@ -660,7 +665,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         texRes=128.0, interpolate=True, depth=0.0)
     boxL1_1 = visual.Rect(
         win=win, name='boxL1_1',
-        width=(0.15, 0.075)[0], height=(0.15, 0.075)[1],
+        width=box_size[0], height=box_size[1],
         ori=0.0, pos=(0.35, 0), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-1.0, interpolate=True)
@@ -668,7 +673,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='shipL1_1', 
         image='spaceship.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(0.35, 0), size=(0.15, 0.15),
+        ori=0.0, pos=(0.35, 0), size=ship_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-2.0)
@@ -732,7 +737,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         texRes=128.0, interpolate=True, depth=0.0)
     boxL2_1 = visual.Rect(
         win=win, name='boxL2_1',
-        width=(0.15, 0.075)[0], height=(0.15, 0.075)[1],
+        width=box_size[0], height=box_size[1],
         ori=0.0, pos=(0.1, 0), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-1.0, interpolate=True)
@@ -740,13 +745,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='shipL2_1', 
         image='spaceship.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(0.1, 0), size=(0.15, 0.15),
+        ori=0.0, pos=(0.1, 0), size=ship_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-2.0)
     boxL2_2 = visual.Rect(
         win=win, name='boxL2_2',
-        width=(0.15, 0.075)[0], height=(0.15, 0.075)[1],
+        width=box_size[0], height=box_size[1],
         ori=0.0, pos=(0.35, 0), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-3.0, interpolate=True)
@@ -754,13 +759,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='shipL2_2', 
         image='spaceship.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(0.35, 0), size=(0.15, 0.15),
+        ori=0.0, pos=(0.35, 0), size=ship_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-4.0)
     boxL2_3 = visual.Rect(
         win=win, name='boxL2_3',
-        width=(0.15, 0.075)[0], height=(0.15, 0.075)[1],
+        width=box_size[0], height=box_size[1],
         ori=0.0, pos=(0.6, 0), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-5.0, interpolate=True)
@@ -768,7 +773,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='shipL2_3', 
         image='spaceship.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(0.6, 0), size=(0.15, 0.15),
+        ori=0.0, pos=(0.6, 0), size=ship_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-6.0)
@@ -832,7 +837,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         texRes=128.0, interpolate=True, depth=0.0)
     boxL3_1 = visual.Rect(
         win=win, name='boxL3_1',
-        width=(0.15, 0.075)[0], height=(0.15, 0.075)[1],
+        width=box_size[0], height=box_size[1],
         ori=0.0, pos=(0.1, 0.25), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-1.0, interpolate=True)
@@ -840,13 +845,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='shipL3_1', 
         image='spaceship.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(0.1, 0.25), size=(0.15, 0.15),
+        ori=0.0, pos=(0.1, 0.25), size=ship_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-2.0)
     boxL3_2 = visual.Rect(
         win=win, name='boxL3_2',
-        width=(0.15, 0.075)[0], height=(0.15, 0.075)[1],
+        width=box_size[0], height=box_size[1],
         ori=0.0, pos=(0.6, 0.25), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-3.0, interpolate=True)
@@ -854,13 +859,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='shipL3_2', 
         image='spaceship.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(0.6, 0.25), size=(0.15, 0.15),
+        ori=0.0, pos=(0.6, 0.25), size=ship_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-4.0)
     boxL3_3 = visual.Rect(
         win=win, name='boxL3_3',
-        width=(0.15, 0.075)[0], height=(0.15, 0.075)[1],
+        width=box_size[0], height=box_size[1],
         ori=0.0, pos=(0.1, -0.25), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-5.0, interpolate=True)
@@ -868,13 +873,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='shipL3_3', 
         image='spaceship.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(0.1, -0.25), size=(0.15, 0.15),
+        ori=0.0, pos=(0.1, -0.25), size=ship_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-6.0)
     boxL3_4 = visual.Rect(
         win=win, name='boxL3_4',
-        width=(0.15, 0.075)[0], height=(0.15, 0.075)[1],
+        width=box_size[0], height=box_size[1],
         ori=0.0, pos=(0.6, -0.25), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-7.0, interpolate=True)
@@ -882,7 +887,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='shipL3_4', 
         image='spaceship.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(0.6, -0.25), size=(0.15, 0.15),
+        ori=0.0, pos=(0.6, -0.25), size=ship_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-8.0)
@@ -946,7 +951,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         texRes=128.0, interpolate=True, depth=0.0)
     boxL4_1 = visual.Rect(
         win=win, name='boxL4_1',
-        width=(0.15, 0.075)[0], height=(0.15, 0.075)[1],
+        width=box_size[0], height=box_size[1],
         ori=0.0, pos=(0.1, 0.25), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-1.0, interpolate=True)
@@ -954,13 +959,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='shipL4_1', 
         image='spaceship.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(0.1, 0.25), size=(0.15, 0.15),
+        ori=0.0, pos=(0.1, 0.25), size=ship_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-2.0)
     boxL4_2 = visual.Rect(
         win=win, name='boxL4_2',
-        width=(0.15, 0.075)[0], height=(0.15, 0.075)[1],
+        width=box_size[0], height=box_size[1],
         ori=0.0, pos=(0.35, 0.25), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-3.0, interpolate=True)
@@ -968,13 +973,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='shipL4_2', 
         image='spaceship.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(0.35, 0.25), size=(0.15, 0.15),
+        ori=0.0, pos=(0.35, 0.25), size=ship_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-4.0)
     boxL4_3 = visual.Rect(
         win=win, name='boxL4_3',
-        width=(0.15, 0.075)[0], height=(0.15, 0.075)[1],
+        width=box_size[0], height=box_size[1],
         ori=0.0, pos=(0.6, 0.25), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-5.0, interpolate=True)
@@ -982,13 +987,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='shipL4_3', 
         image='spaceship.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(0.6, 0.25), size=(0.15, 0.15),
+        ori=0.0, pos=(0.6, 0.25), size=ship_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-6.0)
     boxL4_4 = visual.Rect(
         win=win, name='boxL4_4',
-        width=(0.15, 0.075)[0], height=(0.15, 0.075)[1],
+        width=box_size[0], height=box_size[1],
         ori=0.0, pos=(0.1, 0), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-7.0, interpolate=True)
@@ -996,13 +1001,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='shipL4_4', 
         image='spaceship.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(0.1, 0), size=(0.15, 0.15),
+        ori=0.0, pos=(0.1, 0), size=ship_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-8.0)
     boxL4_5 = visual.Rect(
         win=win, name='boxL4_5',
-        width=(0.15, 0.075)[0], height=(0.15, 0.075)[1],
+        width=box_size[0], height=box_size[1],
         ori=0.0, pos=(0.35, 0), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-9.0, interpolate=True)
@@ -1010,13 +1015,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='shipL4_5', 
         image='spaceship.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(0.35, 0), size=(0.15, 0.15),
+        ori=0.0, pos=(0.35, 0), size=ship_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-10.0)
     boxL4_6 = visual.Rect(
         win=win, name='boxL4_6',
-        width=(0.15, 0.075)[0], height=(0.15, 0.075)[1],
+        width=box_size[0], height=box_size[1],
         ori=0.0, pos=(0.6, 0), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-11.0, interpolate=True)
@@ -1024,13 +1029,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='shipL4_6', 
         image='spaceship.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(0.6, 0), size=(0.15, 0.15),
+        ori=0.0, pos=(0.6, 0), size=ship_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-12.0)
     boxL4_7 = visual.Rect(
         win=win, name='boxL4_7',
-        width=(0.15, 0.075)[0], height=(0.15, 0.075)[1],
+        width=box_size[0], height=box_size[1],
         ori=0.0, pos=(0.1, -0.25), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-13.0, interpolate=True)
@@ -1038,13 +1043,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='shipL4_7', 
         image='spaceship.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(0.1, -0.25), size=(0.15, 0.15),
+        ori=0.0, pos=(0.1, -0.25), size=ship_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-14.0)
     boxL4_8 = visual.Rect(
         win=win, name='boxL4_8',
-        width=(0.15, 0.075)[0], height=(0.15, 0.075)[1],
+        width=box_size[0], height=box_size[1],
         ori=0.0, pos=(0.35, -0.25), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-15.0, interpolate=True)
@@ -1052,13 +1057,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='shipL4_8', 
         image='spaceship.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(0.35, -0.25), size=(0.15, 0.15),
+        ori=0.0, pos=(0.35, -0.25), size=ship_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-16.0)
     boxL4_9 = visual.Rect(
         win=win, name='boxL4_9',
-        width=(0.15, 0.075)[0], height=(0.15, 0.075)[1],
+        width=box_size[0], height=box_size[1],
         ori=0.0, pos=(0.6, -0.25), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-17.0, interpolate=True)
@@ -1066,7 +1071,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='shipL4_9', 
         image='spaceship.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(0.6, -0.25), size=(0.15, 0.15),
+        ori=0.0, pos=(0.6, -0.25), size=ship_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-18.0)
