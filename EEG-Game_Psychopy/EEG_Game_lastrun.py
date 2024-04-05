@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.2.3),
-    on April 03, 2024, at 00:42
+    on April 05, 2024, at 12:41
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -55,9 +55,16 @@ dur_test2 = global_dur_test
 dur_test3 = global_dur_test
 dur_test4 = global_dur_test
 
-#Size of spaceships and boxes sorrounding them
+#Size/position of display objects including ship, target boxes and backgrounds
 ship_size = (0.15, 0.15)
 box_size = (0.15, 0.075)
+game_back_size = (1.75, 1)
+game_back_pos = (-0.1, 0)
+home_back_size = (1.5, 1.2)
+warning_back_size = (1.5, 1) #Current window size
+gameDet_back_size = (1.5, 1)
+pickTest_back_size = (1.5, 1)
+about_back_size = (1.5, 1)
 
 #Duration after a repetition
 dur_blank = 2
@@ -69,11 +76,10 @@ dur_end = 3
 return_home = True
 about_exp_button = False
 start_exp_button = False
-button1 = False
-button2 = False
-button3 = False
-button4 = False
-button5 = False
+buttont1 = False
+buttont2 = False
+buttont3 = False
+buttont4 = False
 lose = False
 
 #Update display to show target object
@@ -187,7 +193,7 @@ def setupData(expInfo, dataDir=None):
     thisExp = data.ExperimentHandler(
         name=expName, version='',
         extraInfo=expInfo, runtimeInfo=None,
-        originPath='C:\\Users\\evanl\\Downloads\\SYP-GambitGameDev-main (1)\\SYP-GambitGameDev-main\\EEG-Game_Psychopy\\EEG_Game_lastrun.py',
+        originPath='C:\\Users\\evanl\\Downloads\\SYP-GambitGameDev-main (2)\\SYP-GambitGameDev-main\\EEG-Game_Psychopy\\EEG_Game_lastrun.py',
         savePickle=True, saveWideText=True,
         dataFileName=dataDir + os.sep + filename, sortColumns='time'
     )
@@ -401,7 +407,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='homepage_image', 
         image='homepage_1.webp', mask=None, anchor='center',
-        ori=0.0, pos=(0, 0), size=(1.5, 1.2),
+        ori=0.0, pos=(0, 0), size=home_back_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
@@ -448,7 +454,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='image_instruction', 
         image='default.png', mask=None, anchor='center',
-        ori=0.0, pos=(0, 0), size=(1.5, 1),
+        ori=0.0, pos=(0, 0), size=about_back_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
@@ -488,7 +494,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='white_background', 
         image='white_background.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(0, 0), size=(1.5, 1),
+        ori=0.0, pos=(0, 0), size=warning_back_size,
         color=[0.6549, 0.6549, 0.6549], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
@@ -535,7 +541,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='MindBattle', 
         image='alien_invasion.jpg', mask=None, anchor='center',
-        ori=0.0, pos=(0, 0), size=(1.5, 1),
+        ori=0.0, pos=(0, 0), size=gameDet_back_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
@@ -567,7 +573,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win, name='brain_animation',
         filename='brain_animation.mp4', movieLib='ffpyplayer',
         loop=True, volume=1.0, noAudio=False,
-        pos=(0, 0), size=(1.5, 1), units=win.units,
+        pos=(0, 0), size=pickTest_back_size, units=win.units,
         ori=0.0, anchor='center',opacity=None, contrast=1.0,
         depth=0
     )
@@ -659,7 +665,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='earth1', 
         image='earth.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(-0.10, 0), size=(1.75, 1),
+        ori=0.0, pos=game_back_pos, size=game_back_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
@@ -697,7 +703,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='earth_blank_4', 
         image='earth.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(-0.10, 0), size=(1.75, 1),
+        ori=0.0, pos=game_back_pos, size=game_back_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
@@ -714,7 +720,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='earth_blank_5', 
         image='earth.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(-0.10, 0), size=(1.75, 1),
+        ori=0.0, pos=game_back_pos, size=game_back_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
@@ -731,7 +737,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='earth2', 
         image='earth.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(-0.10, 0), size=(1.75, 1),
+        ori=0.0, pos=game_back_pos, size=game_back_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
@@ -797,7 +803,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='earth_blank_3', 
         image='earth.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(-0.10, 0), size=(1.75, 1),
+        ori=0.0, pos=game_back_pos, size=game_back_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
@@ -814,7 +820,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='earth_blank_6', 
         image='earth.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(-0.10, 0), size=(1.75, 1),
+        ori=0.0, pos=game_back_pos, size=game_back_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
@@ -831,7 +837,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='earth3', 
         image='earth.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(-0.10, 0), size=(1.75, 1),
+        ori=0.0, pos=game_back_pos, size=game_back_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
@@ -911,7 +917,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='earth_blank_2', 
         image='earth.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(-0.10, 0), size=(1.75, 1),
+        ori=0.0, pos=game_back_pos, size=game_back_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
@@ -928,7 +934,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='earth_blank_7', 
         image='earth.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(-0.10, 0), size=(1.75, 1),
+        ori=0.0, pos=game_back_pos, size=game_back_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
@@ -945,7 +951,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='earth4', 
         image='earth.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(-0.10, 0), size=(1.75, 1),
+        ori=0.0, pos=game_back_pos, size=game_back_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
@@ -1095,7 +1101,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='earth_blank', 
         image='earth.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(-0.10, 0), size=(1.75, 1),
+        ori=0.0, pos=game_back_pos, size=game_back_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
@@ -1112,7 +1118,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='earth_win_2', 
         image='earth_win.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(-0.10, 0), size=(1.75, 1),
+        ori=0.0, pos=game_back_pos, size=game_back_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
@@ -1129,7 +1135,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='earth_lose_2', 
         image='Earth_lost.jpeg', mask=None, anchor='center',
-        ori=0.0, pos=(-0.10, 0), size=(1.75, 1),
+        ori=0.0, pos=game_back_pos, size=game_back_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)
@@ -1694,8 +1700,6 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     continueRoutine = True
     # update component parameters for each repeat
     thisExp.addData('WarningScreen.started', globalClock.getTime())
-    # skip this Routine if its 'Skip if' condition is True
-    continueRoutine = continueRoutine and not (start_exp_button == False)
     # reset button to account for continued clicks & clear times on/off
     button.reset()
     # Run 'Begin Routine' code from code_6
@@ -2140,9 +2144,8 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                         continueRoutine = False
                     if not button_t1.wasClicked:
                         # run callback code when button_t1 is clicked
-                        x = 1
-                        global button1 
-                        button1 = True
+                        global buttont1 
+                        buttont1 = True
             # take note of whether button_t1 was clicked, so that next frame we know if clicks are new
             button_t1.wasClicked = button_t1.isClicked and button_t1.status == STARTED
             # *button_t2* updates
@@ -2178,9 +2181,8 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                         continueRoutine = False
                     if not button_t2.wasClicked:
                         # run callback code when button_t2 is clicked
-                        x = 2
-                        global button2
-                        button2 = True
+                        global buttont2
+                        buttont2 = True
             # take note of whether button_t2 was clicked, so that next frame we know if clicks are new
             button_t2.wasClicked = button_t2.isClicked and button_t2.status == STARTED
             # *button_t3* updates
@@ -2216,9 +2218,8 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                         continueRoutine = False
                     if not button_t3.wasClicked:
                         # run callback code when button_t3 is clicked
-                        x = 3
-                        global button3
-                        button3 = True
+                        global buttont3
+                        buttont3 = True
             # take note of whether button_t3 was clicked, so that next frame we know if clicks are new
             button_t3.wasClicked = button_t3.isClicked and button_t3.status == STARTED
             # *button_t4* updates
@@ -2254,9 +2255,8 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                         continueRoutine = False
                     if not button_t4.wasClicked:
                         # run callback code when button_t4 is clicked
-                        x = 4
-                        global button4
-                        button4= True
+                        global buttont4
+                        buttont4= True
             # take note of whether button_t4 was clicked, so that next frame we know if clicks are new
             button_t4.wasClicked = button_t4.isClicked and button_t4.status == STARTED
             # *button_all* updates
@@ -2292,10 +2292,10 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                         continueRoutine = False
                     if not button_all.wasClicked:
                         # run callback code when button_all is clicked
-                        button1 = True
-                        button2= True
-                        button3= True
-                        button4= True
+                        buttont1 = True
+                        buttont2= True
+                        buttont3= True
+                        buttont4= True
             # take note of whether button_all was clicked, so that next frame we know if clicks are new
             button_all.wasClicked = button_all.isClicked and button_all.status == STARTED
             
@@ -2447,7 +2447,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # update component parameters for each repeat
                 thisExp.addData('test_1.started', globalClock.getTime())
                 # skip this Routine if its 'Skip if' condition is True
-                continueRoutine = continueRoutine and not ((button1 == False) or (lose == True))
+                continueRoutine = continueRoutine and not ((buttont1 == False) or (lose == True))
                 # Run 'Begin Routine' code from test_1_code
                 #Start aquiring data
                 #startTest(dur_test1)
@@ -2702,7 +2702,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                         thisComponent.setAutoDraw(False)
                 thisExp.addData('test_1.stopped', globalClock.getTime())
                 # Run 'End Routine' code from test_1_code
-                if button1 == True and lose == False:
+                if buttont1 == True and lose == False:
                     #EEGdata = getEEGData()
                     EEGdata = [6, 2, 3, 8, 0.25]
                     lose = not compareFreq(EEGdata, freq_curr_trial[targets[trials_1.thisN] - 1])
@@ -2714,7 +2714,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # update component parameters for each repeat
                 thisExp.addData('earth_pause_1.started', globalClock.getTime())
                 # skip this Routine if its 'Skip if' condition is True
-                continueRoutine = continueRoutine and not ((button1 == False) or (lose == True) or (trials_1.thisN == (trials_1.nReps - 1)))
+                continueRoutine = continueRoutine and not ((buttont1 == False) or (lose == True) or (trials_1.thisN == (trials_1.nReps - 1)))
                 # keep track of which components have finished
                 earth_pause_1Components = [earth_blank_4, continue_playing_message_4]
                 for thisComponent in earth_pause_1Components:
@@ -2853,7 +2853,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         # update component parameters for each repeat
         thisExp.addData('before_test2.started', globalClock.getTime())
         # skip this Routine if its 'Skip if' condition is True
-        continueRoutine = continueRoutine and not ((button1 == False) or (lose == True) or (button2 == False))
+        continueRoutine = continueRoutine and not ((buttont1 == False) or (lose == True) or (buttont2 == False))
         # keep track of which components have finished
         before_test2Components = [earth_blank_5, continue_playing_message_5]
         for thisComponent in before_test2Components:
@@ -3036,7 +3036,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # update component parameters for each repeat
                 thisExp.addData('test_2.started', globalClock.getTime())
                 # skip this Routine if its 'Skip if' condition is True
-                continueRoutine = continueRoutine and not ((button2 == False) or (lose == True))
+                continueRoutine = continueRoutine and not ((buttont2 == False) or (lose == True))
                 # Run 'Begin Routine' code from test_2_code
                 #Start aquiring data
                 #startTest(dur_test2)
@@ -3418,7 +3418,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                         thisComponent.setAutoDraw(False)
                 thisExp.addData('test_2.stopped', globalClock.getTime())
                 # Run 'End Routine' code from test_2_code
-                if button2 == True and lose == False:
+                if buttont2 == True and lose == False:
                     #EEGdata = getEEGData()
                     EEGdata = [6, 2, 3, 4, 3]
                 
@@ -3432,7 +3432,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # update component parameters for each repeat
                 thisExp.addData('earth_pause_2.started', globalClock.getTime())
                 # skip this Routine if its 'Skip if' condition is True
-                continueRoutine = continueRoutine and not ((button2 == False) or (lose == True) or (trials_2.thisN == (trials_2.nReps - 1)))
+                continueRoutine = continueRoutine and not ((buttont2 == False) or (lose == True) or (trials_2.thisN == (trials_2.nReps - 1)))
                 # keep track of which components have finished
                 earth_pause_2Components = [earth_blank_3, continue_playing_message_3]
                 for thisComponent in earth_pause_2Components:
@@ -3571,7 +3571,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         # update component parameters for each repeat
         thisExp.addData('before_test3.started', globalClock.getTime())
         # skip this Routine if its 'Skip if' condition is True
-        continueRoutine = continueRoutine and not ((button1 == False) or (lose == True) or (button3 == False))
+        continueRoutine = continueRoutine and not ((buttont1 == False) or (lose == True) or (buttont3 == False))
         # keep track of which components have finished
         before_test3Components = [earth_blank_6, continue_playing_message_6]
         for thisComponent in before_test3Components:
@@ -3754,7 +3754,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # update component parameters for each repeat
                 thisExp.addData('test_3.started', globalClock.getTime())
                 # skip this Routine if its 'Skip if' condition is True
-                continueRoutine = continueRoutine and not ((button3 == False) or (lose == True))
+                continueRoutine = continueRoutine and not ((buttont3 == False) or (lose == True))
                 # Run 'Begin Routine' code from test_3_code
                 #Start aquiring data
                 #startTest(dur_test3)
@@ -4212,11 +4212,10 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                         thisComponent.setAutoDraw(False)
                 thisExp.addData('test_3.stopped', globalClock.getTime())
                 # Run 'End Routine' code from test_3_code
-                if button3 == True and lose == False:
+                if buttont3 == True and lose == False:
                     #EEGdata = getEEGData()
                     EEGdata = [6, 2, 3, 4, 3]
                     lose = not compareFreq(EEGdata, freq_curr_trial[targets[trials_3.thisN] - 1])
-                    #lose = not compareFreq(EEGdata, 15)
                 # the Routine "test_3" was not non-slip safe, so reset the non-slip timer
                 routineTimer.reset()
                 
@@ -4225,7 +4224,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # update component parameters for each repeat
                 thisExp.addData('earth_pause_3.started', globalClock.getTime())
                 # skip this Routine if its 'Skip if' condition is True
-                continueRoutine = continueRoutine and not ((button3 == False) or (lose == True) or (trials_3.thisN == (trials_3.nReps - 1)))
+                continueRoutine = continueRoutine and not ((buttont3 == False) or (lose == True) or (trials_3.thisN == (trials_3.nReps - 1)))
                 # keep track of which components have finished
                 earth_pause_3Components = [earth_blank_2, continue_playing_message_2]
                 for thisComponent in earth_pause_3Components:
@@ -4364,7 +4363,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         # update component parameters for each repeat
         thisExp.addData('before_test4.started', globalClock.getTime())
         # skip this Routine if its 'Skip if' condition is True
-        continueRoutine = continueRoutine and not ((button1 == False) or (lose == True) or (button4 == False))
+        continueRoutine = continueRoutine and not ((buttont1 == False) or (lose == True) or (buttont4 == False))
         # keep track of which components have finished
         before_test4Components = [earth_blank_7, continue_playing_message_7]
         for thisComponent in before_test4Components:
@@ -4547,7 +4546,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # update component parameters for each repeat
                 thisExp.addData('test_4.started', globalClock.getTime())
                 # skip this Routine if its 'Skip if' condition is True
-                continueRoutine = continueRoutine and not ((button4 == False) or (lose == True))
+                continueRoutine = continueRoutine and not ((buttont4 == False) or (lose == True))
                 # Run 'Begin Routine' code from test_4_code
                 #Start aquiring data
                 #startTest(dur_test4)
@@ -5347,7 +5346,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                         thisComponent.setAutoDraw(False)
                 thisExp.addData('test_4.stopped', globalClock.getTime())
                 # Run 'End Routine' code from test_4_code
-                if button4 == True and lose == False:
+                if buttont4 == True and lose == False:
                     #EEGdata = getEEGData()
                     EEGdata = [6, 10, 3, 8, 3]
                     lose = not compareFreq(EEGdata, freq_curr_trial[targets[trials_4.thisN] - 1])
@@ -5360,7 +5359,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # update component parameters for each repeat
                 thisExp.addData('earth_pause_4.started', globalClock.getTime())
                 # skip this Routine if its 'Skip if' condition is True
-                continueRoutine = continueRoutine and not ((button4 == False) or (lose == True) or (trials_4.thisN == (trials_4.nReps - 1)))
+                continueRoutine = continueRoutine and not ((buttont4 == False) or (lose == True) or (trials_4.thisN == (trials_4.nReps - 1)))
                 # keep track of which components have finished
                 earth_pause_4Components = [earth_blank, continue_playing_message]
                 for thisComponent in earth_pause_4Components:
@@ -5749,11 +5748,10 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         # update component parameters for each repeat
         thisExp.addData('reset_buttons.started', globalClock.getTime())
         # Run 'Begin Routine' code from reset_button_bool
-        button1 = False
-        button2 = False
-        button3 = False
-        button4 = False
-        button5 = False
+        buttont1 = False
+        buttont2 = False
+        buttont3 = False
+        buttont4 = False
         start_exp_button = False
         # keep track of which components have finished
         reset_buttonsComponents = []
