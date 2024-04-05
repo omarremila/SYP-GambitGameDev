@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.2.3),
-    on April 05, 2024, at 14:48
+    on April 05, 2024, at 16:19
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -71,15 +71,6 @@ dur_blank = 2
 
 #Duration of win/lose screens
 dur_end = 3
-
-#Intialize all buttons to False
-return_home = True
-start_exp_button = False
-buttont1 = False
-buttont2 = False
-buttont3 = False
-buttont4 = False
-lose = False
 
 #Update display to show target object
 def selectTarget(objects, target):
@@ -1233,9 +1224,17 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
             thisComponent.setAutoDraw(False)
     thisExp.addData('GlobalFunctions.stopped', globalClock.getTime())
     # Run 'End Routine' code from code
+    #Intialize all buttons to False
+    start_exp_button = False
+    buttont1 = False
+    buttont2 = False
+    buttont3 = False
+    buttont4 = False
+    lose = False
     homeButton = False
     newSession = True
     about_exp_button = False
+    
     # the Routine "GlobalFunctions" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
     
@@ -1390,7 +1389,6 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                         continueRoutine = False
                     if not start_button.wasClicked:
                         # run callback code when start_button is clicked
-                        global start_exp_button
                         start_exp_button = True
             # take note of whether start_button was clicked, so that next frame we know if clicks are new
             start_button.wasClicked = start_button.isClicked and start_button.status == STARTED
@@ -2176,7 +2174,6 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                         continueRoutine = False
                     if not button_t1.wasClicked:
                         # run callback code when button_t1 is clicked
-                        global buttont1 
                         buttont1 = True
             # take note of whether button_t1 was clicked, so that next frame we know if clicks are new
             button_t1.wasClicked = button_t1.isClicked and button_t1.status == STARTED
@@ -2213,7 +2210,6 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                         continueRoutine = False
                     if not button_t2.wasClicked:
                         # run callback code when button_t2 is clicked
-                        global buttont2
                         buttont2 = True
             # take note of whether button_t2 was clicked, so that next frame we know if clicks are new
             button_t2.wasClicked = button_t2.isClicked and button_t2.status == STARTED
@@ -2250,7 +2246,6 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                         continueRoutine = False
                     if not button_t3.wasClicked:
                         # run callback code when button_t3 is clicked
-                        global buttont3
                         buttont3 = True
             # take note of whether button_t3 was clicked, so that next frame we know if clicks are new
             button_t3.wasClicked = button_t3.isClicked and button_t3.status == STARTED
@@ -2287,7 +2282,6 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                         continueRoutine = False
                     if not button_t4.wasClicked:
                         # run callback code when button_t4 is clicked
-                        global buttont4
                         buttont4= True
             # take note of whether button_t4 was clicked, so that next frame we know if clicks are new
             button_t4.wasClicked = button_t4.isClicked and button_t4.status == STARTED
