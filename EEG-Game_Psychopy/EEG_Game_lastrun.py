@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.2.3),
-    on April 05, 2024, at 12:41
+    on April 05, 2024, at 14:48
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -74,7 +74,6 @@ dur_end = 3
 
 #Intialize all buttons to False
 return_home = True
-about_exp_button = False
 start_exp_button = False
 buttont1 = False
 buttont2 = False
@@ -415,7 +414,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         text='Click here to learn more ', font='Arvo',
         pos=(-0.5, -0.4),
         letterHeight=0.03,
-        size=(0.5, 0.09), borderWidth=0.0,
+        size=(0.5, 0.08), borderWidth=0.0,
         fillColor=[-1.0000, -1.0000, -1.0000], borderColor=None,
         color=[1.0000, -0.4588, -1.0000], colorSpace='rgb',
         opacity=None,
@@ -443,11 +442,6 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     start_button.buttonClock = core.Clock()
     
     # --- Initialize components for Routine "instructionprep" ---
-    # Run 'Begin Experiment' code from code_2
-    cur_row = 0
-    button_pressed = "none"
-    show_instructions = 1
-    max_slides = 6
     
     # --- Initialize components for Routine "AboutExpScreen" ---
     image_instruction = visual.ImageStim(
@@ -652,13 +646,28 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         depth=-5
     )
     button_all.buttonClock = core.Clock()
+    home_button = visual.ButtonStim(win, 
+        text='Home', font='Arvo',
+        pos=(0.67, -0.45),
+        letterHeight=0.025,
+        size=(0.125, 0.065), borderWidth=1.0,
+        fillColor=[0.0902, -1.0000, 0.0902], borderColor=[-0.1686, -0.2941, 0.6078],
+        color=[-1.0000, -1.0000, -1.0000], colorSpace='rgb',
+        opacity=None,
+        bold=True, italic=False,
+        padding=None,
+        anchor='center',
+        name='home_button',
+        depth=-6
+    )
+    home_button.buttonClock = core.Clock()
     text = visual.TextStim(win=win, name='text',
         text='Choose a level',
         font='Open Sans ',
         pos=(0, 0.43), height=0.06, wrapWidth=None, ori=0.0, 
         color=[1.0000, 1.0000, 1.0000], colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
-        depth=-6.0);
+        depth=-7.0);
     
     # --- Initialize components for Routine "test_1" ---
     earth1 = visual.ImageStim(
@@ -1150,6 +1159,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     # --- Initialize components for Routine "reset_buttons" ---
     
     # --- Initialize components for Routine "GoodBye" ---
+    text_2 = visual.TextStim(win=win, name='text_2',
+        text='Game has timed out',
+        font='Open Sans',
+        pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=0.0);
     
     # create some handy timers
     if globalClock is None:
@@ -1216,818 +1232,15 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     thisExp.addData('GlobalFunctions.stopped', globalClock.getTime())
+    # Run 'End Routine' code from code
+    homeButton = False
+    newSession = True
+    about_exp_button = False
     # the Routine "GlobalFunctions" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
     
-    # --- Prepare to start Routine "WelcomeScreen" ---
-    continueRoutine = True
-    # update component parameters for each repeat
-    thisExp.addData('WelcomeScreen.started', globalClock.getTime())
-    # reset about_button to account for continued clicks & clear times on/off
-    about_button.reset()
-    # reset start_button to account for continued clicks & clear times on/off
-    start_button.reset()
-    # keep track of which components have finished
-    WelcomeScreenComponents = [homepage_image, about_button, start_button]
-    for thisComponent in WelcomeScreenComponents:
-        thisComponent.tStart = None
-        thisComponent.tStop = None
-        thisComponent.tStartRefresh = None
-        thisComponent.tStopRefresh = None
-        if hasattr(thisComponent, 'status'):
-            thisComponent.status = NOT_STARTED
-    # reset timers
-    t = 0
-    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-    frameN = -1
-    
-    # --- Run Routine "WelcomeScreen" ---
-    routineForceEnded = not continueRoutine
-    while continueRoutine:
-        # get current time
-        t = routineTimer.getTime()
-        tThisFlip = win.getFutureFlipTime(clock=routineTimer)
-        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-        # update/draw components on each frame
-        
-        # *homepage_image* updates
-        
-        # if homepage_image is starting this frame...
-        if homepage_image.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            homepage_image.frameNStart = frameN  # exact frame index
-            homepage_image.tStart = t  # local t and not account for scr refresh
-            homepage_image.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(homepage_image, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'homepage_image.started')
-            # update status
-            homepage_image.status = STARTED
-            homepage_image.setAutoDraw(True)
-        
-        # if homepage_image is active this frame...
-        if homepage_image.status == STARTED:
-            # update params
-            pass
-        # *about_button* updates
-        
-        # if about_button is starting this frame...
-        if about_button.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
-            # keep track of start time/frame for later
-            about_button.frameNStart = frameN  # exact frame index
-            about_button.tStart = t  # local t and not account for scr refresh
-            about_button.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(about_button, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'about_button.started')
-            # update status
-            about_button.status = STARTED
-            about_button.setAutoDraw(True)
-        
-        # if about_button is active this frame...
-        if about_button.status == STARTED:
-            # update params
-            pass
-            # check whether about_button has been pressed
-            if about_button.isClicked:
-                if not about_button.wasClicked:
-                    # if this is a new click, store time of first click and clicked until
-                    about_button.timesOn.append(about_button.buttonClock.getTime())
-                    about_button.timesOff.append(about_button.buttonClock.getTime())
-                elif len(about_button.timesOff):
-                    # if click is continuing from last frame, update time of clicked until
-                    about_button.timesOff[-1] = about_button.buttonClock.getTime()
-                if not about_button.wasClicked:
-                    # end routine when about_button is clicked
-                    continueRoutine = False
-                if not about_button.wasClicked:
-                    # run callback code when about_button is clicked
-                    global about_exp_button
-                    about_exp_button = True
-        # take note of whether about_button was clicked, so that next frame we know if clicks are new
-        about_button.wasClicked = about_button.isClicked and about_button.status == STARTED
-        # *start_button* updates
-        
-        # if start_button is starting this frame...
-        if start_button.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
-            # keep track of start time/frame for later
-            start_button.frameNStart = frameN  # exact frame index
-            start_button.tStart = t  # local t and not account for scr refresh
-            start_button.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(start_button, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'start_button.started')
-            # update status
-            start_button.status = STARTED
-            start_button.setAutoDraw(True)
-        
-        # if start_button is active this frame...
-        if start_button.status == STARTED:
-            # update params
-            pass
-            # check whether start_button has been pressed
-            if start_button.isClicked:
-                if not start_button.wasClicked:
-                    # if this is a new click, store time of first click and clicked until
-                    start_button.timesOn.append(start_button.buttonClock.getTime())
-                    start_button.timesOff.append(start_button.buttonClock.getTime())
-                elif len(start_button.timesOff):
-                    # if click is continuing from last frame, update time of clicked until
-                    start_button.timesOff[-1] = start_button.buttonClock.getTime()
-                if not start_button.wasClicked:
-                    # end routine when start_button is clicked
-                    continueRoutine = False
-                if not start_button.wasClicked:
-                    # run callback code when start_button is clicked
-                    global start_exp_button
-                    start_exp_button = True
-        # take note of whether start_button was clicked, so that next frame we know if clicks are new
-        start_button.wasClicked = start_button.isClicked and start_button.status == STARTED
-        
-        # check for quit (typically the Esc key)
-        if defaultKeyboard.getKeys(keyList=["escape"]):
-            thisExp.status = FINISHED
-        if thisExp.status == FINISHED or endExpNow:
-            endExperiment(thisExp, inputs=inputs, win=win)
-            return
-        
-        # check if all components have finished
-        if not continueRoutine:  # a component has requested a forced-end of Routine
-            routineForceEnded = True
-            break
-        continueRoutine = False  # will revert to True if at least one component still running
-        for thisComponent in WelcomeScreenComponents:
-            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                continueRoutine = True
-                break  # at least one component has not yet finished
-        
-        # refresh the screen
-        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-            win.flip()
-    
-    # --- Ending Routine "WelcomeScreen" ---
-    for thisComponent in WelcomeScreenComponents:
-        if hasattr(thisComponent, "setAutoDraw"):
-            thisComponent.setAutoDraw(False)
-    thisExp.addData('WelcomeScreen.stopped', globalClock.getTime())
-    thisExp.addData('about_button.numClicks', about_button.numClicks)
-    if about_button.numClicks:
-       thisExp.addData('about_button.timesOn', about_button.timesOn)
-       thisExp.addData('about_button.timesOff', about_button.timesOff)
-    else:
-       thisExp.addData('about_button.timesOn', "")
-       thisExp.addData('about_button.timesOff', "")
-    thisExp.addData('start_button.numClicks', start_button.numClicks)
-    if start_button.numClicks:
-       thisExp.addData('start_button.timesOn', start_button.timesOn)
-       thisExp.addData('start_button.timesOff', start_button.timesOff)
-    else:
-       thisExp.addData('start_button.timesOn', "")
-       thisExp.addData('start_button.timesOff', "")
-    # the Routine "WelcomeScreen" was not non-slip safe, so reset the non-slip timer
-    routineTimer.reset()
-    
     # set up handler to look after randomisation of conditions etc
-    instructions_controller = data.TrialHandler(nReps=9999.0, method='random', 
-        extraInfo=expInfo, originPath=-1,
-        trialList=[None],
-        seed=None, name='instructions_controller')
-    thisExp.addLoop(instructions_controller)  # add the loop to the experiment
-    thisInstructions_controller = instructions_controller.trialList[0]  # so we can initialise stimuli with some values
-    # abbreviate parameter names if possible (e.g. rgb = thisInstructions_controller.rgb)
-    if thisInstructions_controller != None:
-        for paramName in thisInstructions_controller:
-            globals()[paramName] = thisInstructions_controller[paramName]
-    
-    for thisInstructions_controller in instructions_controller:
-        currentLoop = instructions_controller
-        thisExp.timestampOnFlip(win, 'thisRow.t')
-        # pause experiment here if requested
-        if thisExp.status == PAUSED:
-            pauseExperiment(
-                thisExp=thisExp, 
-                inputs=inputs, 
-                win=win, 
-                timers=[routineTimer], 
-                playbackComponents=[]
-        )
-        # abbreviate parameter names if possible (e.g. rgb = thisInstructions_controller.rgb)
-        if thisInstructions_controller != None:
-            for paramName in thisInstructions_controller:
-                globals()[paramName] = thisInstructions_controller[paramName]
-        
-        # --- Prepare to start Routine "instructionprep" ---
-        continueRoutine = True
-        # update component parameters for each repeat
-        thisExp.addData('instructionprep.started', globalClock.getTime())
-        # Run 'Begin Routine' code from code_2
-        if (about_exp_button == False) :
-            instructions_controller.finished = 1
-            show_instructions = 0
-            cur_row = max_slides
-        if(button_pressed == "next"):
-            cur_row += 1 
-         
-        elif (button_pressed == "back"):
-            cur_row -= 1 
-        button_pressed = "none"
-        
-        if (cur_row < 0) :
-            cur_row = 0 
-         
-        if (cur_row > max_slides) :
-            instructions_controller.finished = 1
-            show_instructions = 0
-            cur_row = max_slides
-            
-                
-        # keep track of which components have finished
-        instructionprepComponents = []
-        for thisComponent in instructionprepComponents:
-            thisComponent.tStart = None
-            thisComponent.tStop = None
-            thisComponent.tStartRefresh = None
-            thisComponent.tStopRefresh = None
-            if hasattr(thisComponent, 'status'):
-                thisComponent.status = NOT_STARTED
-        # reset timers
-        t = 0
-        _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-        frameN = -1
-        
-        # --- Run Routine "instructionprep" ---
-        routineForceEnded = not continueRoutine
-        while continueRoutine:
-            # get current time
-            t = routineTimer.getTime()
-            tThisFlip = win.getFutureFlipTime(clock=routineTimer)
-            tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-            # update/draw components on each frame
-            
-            # check for quit (typically the Esc key)
-            if defaultKeyboard.getKeys(keyList=["escape"]):
-                thisExp.status = FINISHED
-            if thisExp.status == FINISHED or endExpNow:
-                endExperiment(thisExp, inputs=inputs, win=win)
-                return
-            
-            # check if all components have finished
-            if not continueRoutine:  # a component has requested a forced-end of Routine
-                routineForceEnded = True
-                break
-            continueRoutine = False  # will revert to True if at least one component still running
-            for thisComponent in instructionprepComponents:
-                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                    continueRoutine = True
-                    break  # at least one component has not yet finished
-            
-            # refresh the screen
-            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-                win.flip()
-        
-        # --- Ending Routine "instructionprep" ---
-        for thisComponent in instructionprepComponents:
-            if hasattr(thisComponent, "setAutoDraw"):
-                thisComponent.setAutoDraw(False)
-        thisExp.addData('instructionprep.stopped', globalClock.getTime())
-        # the Routine "instructionprep" was not non-slip safe, so reset the non-slip timer
-        routineTimer.reset()
-        
-        # set up handler to look after randomisation of conditions etc
-        about_slide_loop = data.TrialHandler(nReps=show_instructions, method='random', 
-            extraInfo=expInfo, originPath=-1,
-            trialList=data.importConditions('slide_order.xlsx', selection=str(cur_row)),
-            seed=None, name='about_slide_loop')
-        thisExp.addLoop(about_slide_loop)  # add the loop to the experiment
-        thisAbout_slide_loop = about_slide_loop.trialList[0]  # so we can initialise stimuli with some values
-        # abbreviate parameter names if possible (e.g. rgb = thisAbout_slide_loop.rgb)
-        if thisAbout_slide_loop != None:
-            for paramName in thisAbout_slide_loop:
-                globals()[paramName] = thisAbout_slide_loop[paramName]
-        
-        for thisAbout_slide_loop in about_slide_loop:
-            currentLoop = about_slide_loop
-            thisExp.timestampOnFlip(win, 'thisRow.t')
-            # pause experiment here if requested
-            if thisExp.status == PAUSED:
-                pauseExperiment(
-                    thisExp=thisExp, 
-                    inputs=inputs, 
-                    win=win, 
-                    timers=[routineTimer], 
-                    playbackComponents=[]
-            )
-            # abbreviate parameter names if possible (e.g. rgb = thisAbout_slide_loop.rgb)
-            if thisAbout_slide_loop != None:
-                for paramName in thisAbout_slide_loop:
-                    globals()[paramName] = thisAbout_slide_loop[paramName]
-            
-            # --- Prepare to start Routine "AboutExpScreen" ---
-            continueRoutine = True
-            # update component parameters for each repeat
-            thisExp.addData('AboutExpScreen.started', globalClock.getTime())
-            image_instruction.setImage(about_slide)
-            # reset next_button to account for continued clicks & clear times on/off
-            next_button.reset()
-            # reset back_button to account for continued clicks & clear times on/off
-            back_button.reset()
-            # keep track of which components have finished
-            AboutExpScreenComponents = [image_instruction, next_button, back_button]
-            for thisComponent in AboutExpScreenComponents:
-                thisComponent.tStart = None
-                thisComponent.tStop = None
-                thisComponent.tStartRefresh = None
-                thisComponent.tStopRefresh = None
-                if hasattr(thisComponent, 'status'):
-                    thisComponent.status = NOT_STARTED
-            # reset timers
-            t = 0
-            _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-            frameN = -1
-            
-            # --- Run Routine "AboutExpScreen" ---
-            routineForceEnded = not continueRoutine
-            while continueRoutine:
-                # get current time
-                t = routineTimer.getTime()
-                tThisFlip = win.getFutureFlipTime(clock=routineTimer)
-                tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-                frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-                # update/draw components on each frame
-                
-                # *image_instruction* updates
-                
-                # if image_instruction is starting this frame...
-                if image_instruction.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                    # keep track of start time/frame for later
-                    image_instruction.frameNStart = frameN  # exact frame index
-                    image_instruction.tStart = t  # local t and not account for scr refresh
-                    image_instruction.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(image_instruction, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'image_instruction.started')
-                    # update status
-                    image_instruction.status = STARTED
-                    image_instruction.setAutoDraw(True)
-                
-                # if image_instruction is active this frame...
-                if image_instruction.status == STARTED:
-                    # update params
-                    pass
-                # *next_button* updates
-                
-                # if next_button is starting this frame...
-                if next_button.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
-                    # keep track of start time/frame for later
-                    next_button.frameNStart = frameN  # exact frame index
-                    next_button.tStart = t  # local t and not account for scr refresh
-                    next_button.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(next_button, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'next_button.started')
-                    # update status
-                    next_button.status = STARTED
-                    next_button.setAutoDraw(True)
-                
-                # if next_button is active this frame...
-                if next_button.status == STARTED:
-                    # update params
-                    pass
-                    # check whether next_button has been pressed
-                    if next_button.isClicked:
-                        if not next_button.wasClicked:
-                            # if this is a new click, store time of first click and clicked until
-                            next_button.timesOn.append(next_button.buttonClock.getTime())
-                            next_button.timesOff.append(next_button.buttonClock.getTime())
-                        elif len(next_button.timesOff):
-                            # if click is continuing from last frame, update time of clicked until
-                            next_button.timesOff[-1] = next_button.buttonClock.getTime()
-                        if not next_button.wasClicked:
-                            # end routine when next_button is clicked
-                            continueRoutine = False
-                        if not next_button.wasClicked:
-                            # run callback code when next_button is clicked
-                            button_pressed = "next"
-                # take note of whether next_button was clicked, so that next frame we know if clicks are new
-                next_button.wasClicked = next_button.isClicked and next_button.status == STARTED
-                # *back_button* updates
-                
-                # if back_button is starting this frame...
-                if back_button.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
-                    # keep track of start time/frame for later
-                    back_button.frameNStart = frameN  # exact frame index
-                    back_button.tStart = t  # local t and not account for scr refresh
-                    back_button.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(back_button, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'back_button.started')
-                    # update status
-                    back_button.status = STARTED
-                    back_button.setAutoDraw(True)
-                
-                # if back_button is active this frame...
-                if back_button.status == STARTED:
-                    # update params
-                    pass
-                    # check whether back_button has been pressed
-                    if back_button.isClicked:
-                        if not back_button.wasClicked:
-                            # if this is a new click, store time of first click and clicked until
-                            back_button.timesOn.append(back_button.buttonClock.getTime())
-                            back_button.timesOff.append(back_button.buttonClock.getTime())
-                        elif len(back_button.timesOff):
-                            # if click is continuing from last frame, update time of clicked until
-                            back_button.timesOff[-1] = back_button.buttonClock.getTime()
-                        if not back_button.wasClicked:
-                            # end routine when back_button is clicked
-                            continueRoutine = False
-                        if not back_button.wasClicked:
-                            # run callback code when back_button is clicked
-                            button_pressed = "back"
-                # take note of whether back_button was clicked, so that next frame we know if clicks are new
-                back_button.wasClicked = back_button.isClicked and back_button.status == STARTED
-                
-                # check for quit (typically the Esc key)
-                if defaultKeyboard.getKeys(keyList=["escape"]):
-                    thisExp.status = FINISHED
-                if thisExp.status == FINISHED or endExpNow:
-                    endExperiment(thisExp, inputs=inputs, win=win)
-                    return
-                
-                # check if all components have finished
-                if not continueRoutine:  # a component has requested a forced-end of Routine
-                    routineForceEnded = True
-                    break
-                continueRoutine = False  # will revert to True if at least one component still running
-                for thisComponent in AboutExpScreenComponents:
-                    if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                        continueRoutine = True
-                        break  # at least one component has not yet finished
-                
-                # refresh the screen
-                if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-                    win.flip()
-            
-            # --- Ending Routine "AboutExpScreen" ---
-            for thisComponent in AboutExpScreenComponents:
-                if hasattr(thisComponent, "setAutoDraw"):
-                    thisComponent.setAutoDraw(False)
-            thisExp.addData('AboutExpScreen.stopped', globalClock.getTime())
-            about_slide_loop.addData('next_button.numClicks', next_button.numClicks)
-            if next_button.numClicks:
-               about_slide_loop.addData('next_button.timesOn', next_button.timesOn)
-               about_slide_loop.addData('next_button.timesOff', next_button.timesOff)
-            else:
-               about_slide_loop.addData('next_button.timesOn', "")
-               about_slide_loop.addData('next_button.timesOff', "")
-            about_slide_loop.addData('back_button.numClicks', back_button.numClicks)
-            if back_button.numClicks:
-               about_slide_loop.addData('back_button.timesOn', back_button.timesOn)
-               about_slide_loop.addData('back_button.timesOff', back_button.timesOff)
-            else:
-               about_slide_loop.addData('back_button.timesOn', "")
-               about_slide_loop.addData('back_button.timesOff', "")
-            # the Routine "AboutExpScreen" was not non-slip safe, so reset the non-slip timer
-            routineTimer.reset()
-        # completed show_instructions repeats of 'about_slide_loop'
-        
-    # completed 9999.0 repeats of 'instructions_controller'
-    
-    
-    # --- Prepare to start Routine "WarningScreen" ---
-    continueRoutine = True
-    # update component parameters for each repeat
-    thisExp.addData('WarningScreen.started', globalClock.getTime())
-    # reset button to account for continued clicks & clear times on/off
-    button.reset()
-    # Run 'Begin Routine' code from code_6
-    warning_heading.bold = True
-    # keep track of which components have finished
-    WarningScreenComponents = [white_background, welcome_message, caution_sign, button, warning_heading]
-    for thisComponent in WarningScreenComponents:
-        thisComponent.tStart = None
-        thisComponent.tStop = None
-        thisComponent.tStartRefresh = None
-        thisComponent.tStopRefresh = None
-        if hasattr(thisComponent, 'status'):
-            thisComponent.status = NOT_STARTED
-    # reset timers
-    t = 0
-    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-    frameN = -1
-    
-    # --- Run Routine "WarningScreen" ---
-    routineForceEnded = not continueRoutine
-    while continueRoutine:
-        # get current time
-        t = routineTimer.getTime()
-        tThisFlip = win.getFutureFlipTime(clock=routineTimer)
-        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-        # update/draw components on each frame
-        
-        # *white_background* updates
-        
-        # if white_background is starting this frame...
-        if white_background.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            white_background.frameNStart = frameN  # exact frame index
-            white_background.tStart = t  # local t and not account for scr refresh
-            white_background.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(white_background, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'white_background.started')
-            # update status
-            white_background.status = STARTED
-            white_background.setAutoDraw(True)
-        
-        # if white_background is active this frame...
-        if white_background.status == STARTED:
-            # update params
-            pass
-        
-        # *welcome_message* updates
-        
-        # if welcome_message is starting this frame...
-        if welcome_message.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            welcome_message.frameNStart = frameN  # exact frame index
-            welcome_message.tStart = t  # local t and not account for scr refresh
-            welcome_message.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(welcome_message, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'welcome_message.started')
-            # update status
-            welcome_message.status = STARTED
-            welcome_message.setAutoDraw(True)
-        
-        # if welcome_message is active this frame...
-        if welcome_message.status == STARTED:
-            # update params
-            welcome_message.setText('\n\nThis experiment entails the observation of flickering objects. Individuals with a predisposition to epilepsy or other visual sensitivities are advised to exercise caution or to abstain from participation. We cannot assume liability for any discomfort or complications that may ensue.\n\n\n', log=False)
-        
-        # *caution_sign* updates
-        
-        # if caution_sign is starting this frame...
-        if caution_sign.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            caution_sign.frameNStart = frameN  # exact frame index
-            caution_sign.tStart = t  # local t and not account for scr refresh
-            caution_sign.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(caution_sign, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'caution_sign.started')
-            # update status
-            caution_sign.status = STARTED
-            caution_sign.setAutoDraw(True)
-        
-        # if caution_sign is active this frame...
-        if caution_sign.status == STARTED:
-            # update params
-            pass
-        # *button* updates
-        
-        # if button is starting this frame...
-        if button.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
-            # keep track of start time/frame for later
-            button.frameNStart = frameN  # exact frame index
-            button.tStart = t  # local t and not account for scr refresh
-            button.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(button, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'button.started')
-            # update status
-            button.status = STARTED
-            button.setAutoDraw(True)
-        
-        # if button is active this frame...
-        if button.status == STARTED:
-            # update params
-            pass
-            # check whether button has been pressed
-            if button.isClicked:
-                if not button.wasClicked:
-                    # if this is a new click, store time of first click and clicked until
-                    button.timesOn.append(button.buttonClock.getTime())
-                    button.timesOff.append(button.buttonClock.getTime())
-                elif len(button.timesOff):
-                    # if click is continuing from last frame, update time of clicked until
-                    button.timesOff[-1] = button.buttonClock.getTime()
-                if not button.wasClicked:
-                    # end routine when button is clicked
-                    continueRoutine = False
-                if not button.wasClicked:
-                    # run callback code when button is clicked
-                    pass
-        # take note of whether button was clicked, so that next frame we know if clicks are new
-        button.wasClicked = button.isClicked and button.status == STARTED
-        
-        # *warning_heading* updates
-        
-        # if warning_heading is starting this frame...
-        if warning_heading.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            warning_heading.frameNStart = frameN  # exact frame index
-            warning_heading.tStart = t  # local t and not account for scr refresh
-            warning_heading.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(warning_heading, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'warning_heading.started')
-            # update status
-            warning_heading.status = STARTED
-            warning_heading.setAutoDraw(True)
-        
-        # if warning_heading is active this frame...
-        if warning_heading.status == STARTED:
-            # update params
-            pass
-        
-        # check for quit (typically the Esc key)
-        if defaultKeyboard.getKeys(keyList=["escape"]):
-            thisExp.status = FINISHED
-        if thisExp.status == FINISHED or endExpNow:
-            endExperiment(thisExp, inputs=inputs, win=win)
-            return
-        
-        # check if all components have finished
-        if not continueRoutine:  # a component has requested a forced-end of Routine
-            routineForceEnded = True
-            break
-        continueRoutine = False  # will revert to True if at least one component still running
-        for thisComponent in WarningScreenComponents:
-            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                continueRoutine = True
-                break  # at least one component has not yet finished
-        
-        # refresh the screen
-        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-            win.flip()
-    
-    # --- Ending Routine "WarningScreen" ---
-    for thisComponent in WarningScreenComponents:
-        if hasattr(thisComponent, "setAutoDraw"):
-            thisComponent.setAutoDraw(False)
-    thisExp.addData('WarningScreen.stopped', globalClock.getTime())
-    thisExp.addData('button.numClicks', button.numClicks)
-    if button.numClicks:
-       thisExp.addData('button.timesOn', button.timesOn)
-       thisExp.addData('button.timesOff', button.timesOff)
-    else:
-       thisExp.addData('button.timesOn', "")
-       thisExp.addData('button.timesOff', "")
-    # Run 'End Routine' code from code_6
-    skip = False
-    # the Routine "WarningScreen" was not non-slip safe, so reset the non-slip timer
-    routineTimer.reset()
-    
-    # --- Prepare to start Routine "GameDet" ---
-    continueRoutine = True
-    # update component parameters for each repeat
-    thisExp.addData('GameDet.started', globalClock.getTime())
-    # skip this Routine if its 'Skip if' condition is True
-    continueRoutine = continueRoutine and not (skip == True)
-    # reset Skip to account for continued clicks & clear times on/off
-    Skip.reset()
-    # keep track of which components have finished
-    GameDetComponents = [MindBattle, explanation, Skip]
-    for thisComponent in GameDetComponents:
-        thisComponent.tStart = None
-        thisComponent.tStop = None
-        thisComponent.tStartRefresh = None
-        thisComponent.tStopRefresh = None
-        if hasattr(thisComponent, 'status'):
-            thisComponent.status = NOT_STARTED
-    # reset timers
-    t = 0
-    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-    frameN = -1
-    
-    # --- Run Routine "GameDet" ---
-    routineForceEnded = not continueRoutine
-    while continueRoutine:
-        # get current time
-        t = routineTimer.getTime()
-        tThisFlip = win.getFutureFlipTime(clock=routineTimer)
-        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-        # update/draw components on each frame
-        
-        # *MindBattle* updates
-        
-        # if MindBattle is starting this frame...
-        if MindBattle.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            MindBattle.frameNStart = frameN  # exact frame index
-            MindBattle.tStart = t  # local t and not account for scr refresh
-            MindBattle.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(MindBattle, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'MindBattle.started')
-            # update status
-            MindBattle.status = STARTED
-            MindBattle.setAutoDraw(True)
-        
-        # if MindBattle is active this frame...
-        if MindBattle.status == STARTED:
-            # update params
-            pass
-        
-        # *explanation* updates
-        
-        # if explanation is starting this frame...
-        if explanation.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            explanation.frameNStart = frameN  # exact frame index
-            explanation.tStart = t  # local t and not account for scr refresh
-            explanation.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(explanation, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'explanation.started')
-            # update status
-            explanation.status = STARTED
-            explanation.setAutoDraw(True)
-        
-        # if explanation is active this frame...
-        if explanation.status == STARTED:
-            # update params
-            pass
-        # *Skip* updates
-        
-        # if Skip is starting this frame...
-        if Skip.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
-            # keep track of start time/frame for later
-            Skip.frameNStart = frameN  # exact frame index
-            Skip.tStart = t  # local t and not account for scr refresh
-            Skip.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(Skip, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'Skip.started')
-            # update status
-            Skip.status = STARTED
-            Skip.setAutoDraw(True)
-        
-        # if Skip is active this frame...
-        if Skip.status == STARTED:
-            # update params
-            pass
-            # check whether Skip has been pressed
-            if Skip.isClicked:
-                if not Skip.wasClicked:
-                    # if this is a new click, store time of first click and clicked until
-                    Skip.timesOn.append(Skip.buttonClock.getTime())
-                    Skip.timesOff.append(Skip.buttonClock.getTime())
-                elif len(Skip.timesOff):
-                    # if click is continuing from last frame, update time of clicked until
-                    Skip.timesOff[-1] = Skip.buttonClock.getTime()
-                if not Skip.wasClicked:
-                    # end routine when Skip is clicked
-                    continueRoutine = False
-                if not Skip.wasClicked:
-                    # run callback code when Skip is clicked
-                    skip = True
-        # take note of whether Skip was clicked, so that next frame we know if clicks are new
-        Skip.wasClicked = Skip.isClicked and Skip.status == STARTED
-        
-        # check for quit (typically the Esc key)
-        if defaultKeyboard.getKeys(keyList=["escape"]):
-            thisExp.status = FINISHED
-        if thisExp.status == FINISHED or endExpNow:
-            endExperiment(thisExp, inputs=inputs, win=win)
-            return
-        
-        # check if all components have finished
-        if not continueRoutine:  # a component has requested a forced-end of Routine
-            routineForceEnded = True
-            break
-        continueRoutine = False  # will revert to True if at least one component still running
-        for thisComponent in GameDetComponents:
-            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                continueRoutine = True
-                break  # at least one component has not yet finished
-        
-        # refresh the screen
-        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-            win.flip()
-    
-    # --- Ending Routine "GameDet" ---
-    for thisComponent in GameDetComponents:
-        if hasattr(thisComponent, "setAutoDraw"):
-            thisComponent.setAutoDraw(False)
-    thisExp.addData('GameDet.stopped', globalClock.getTime())
-    thisExp.addData('Skip.numClicks', Skip.numClicks)
-    if Skip.numClicks:
-       thisExp.addData('Skip.timesOn', Skip.timesOn)
-       thisExp.addData('Skip.timesOff', Skip.timesOff)
-    else:
-       thisExp.addData('Skip.timesOn', "")
-       thisExp.addData('Skip.timesOff', "")
-    # the Routine "GameDet" was not non-slip safe, so reset the non-slip timer
-    routineTimer.reset()
-    
-    # set up handler to look after randomisation of conditions etc
-    return_to_homepage = data.TrialHandler(nReps=10.0, method='sequential', 
+    return_to_homepage = data.TrialHandler(nReps=100.0, method='sequential', 
         extraInfo=expInfo, originPath=-1,
         trialList=[None],
         seed=None, name='return_to_homepage')
@@ -2055,6 +1268,821 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
             for paramName in thisReturn_to_homepage:
                 globals()[paramName] = thisReturn_to_homepage[paramName]
         
+        # --- Prepare to start Routine "WelcomeScreen" ---
+        continueRoutine = True
+        # update component parameters for each repeat
+        thisExp.addData('WelcomeScreen.started', globalClock.getTime())
+        # skip this Routine if its 'Skip if' condition is True
+        continueRoutine = continueRoutine and not ((homeButton == False) and (newSession == False))
+        # reset about_button to account for continued clicks & clear times on/off
+        about_button.reset()
+        # reset start_button to account for continued clicks & clear times on/off
+        start_button.reset()
+        # keep track of which components have finished
+        WelcomeScreenComponents = [homepage_image, about_button, start_button]
+        for thisComponent in WelcomeScreenComponents:
+            thisComponent.tStart = None
+            thisComponent.tStop = None
+            thisComponent.tStartRefresh = None
+            thisComponent.tStopRefresh = None
+            if hasattr(thisComponent, 'status'):
+                thisComponent.status = NOT_STARTED
+        # reset timers
+        t = 0
+        _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+        frameN = -1
+        
+        # --- Run Routine "WelcomeScreen" ---
+        routineForceEnded = not continueRoutine
+        while continueRoutine:
+            # get current time
+            t = routineTimer.getTime()
+            tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+            tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+            # update/draw components on each frame
+            
+            # *homepage_image* updates
+            
+            # if homepage_image is starting this frame...
+            if homepage_image.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                homepage_image.frameNStart = frameN  # exact frame index
+                homepage_image.tStart = t  # local t and not account for scr refresh
+                homepage_image.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(homepage_image, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'homepage_image.started')
+                # update status
+                homepage_image.status = STARTED
+                homepage_image.setAutoDraw(True)
+            
+            # if homepage_image is active this frame...
+            if homepage_image.status == STARTED:
+                # update params
+                pass
+            # *about_button* updates
+            
+            # if about_button is starting this frame...
+            if about_button.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
+                # keep track of start time/frame for later
+                about_button.frameNStart = frameN  # exact frame index
+                about_button.tStart = t  # local t and not account for scr refresh
+                about_button.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(about_button, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'about_button.started')
+                # update status
+                about_button.status = STARTED
+                about_button.setAutoDraw(True)
+            
+            # if about_button is active this frame...
+            if about_button.status == STARTED:
+                # update params
+                pass
+                # check whether about_button has been pressed
+                if about_button.isClicked:
+                    if not about_button.wasClicked:
+                        # if this is a new click, store time of first click and clicked until
+                        about_button.timesOn.append(about_button.buttonClock.getTime())
+                        about_button.timesOff.append(about_button.buttonClock.getTime())
+                    elif len(about_button.timesOff):
+                        # if click is continuing from last frame, update time of clicked until
+                        about_button.timesOff[-1] = about_button.buttonClock.getTime()
+                    if not about_button.wasClicked:
+                        # end routine when about_button is clicked
+                        continueRoutine = False
+                    if not about_button.wasClicked:
+                        # run callback code when about_button is clicked
+                        about_exp_button = True
+            # take note of whether about_button was clicked, so that next frame we know if clicks are new
+            about_button.wasClicked = about_button.isClicked and about_button.status == STARTED
+            # *start_button* updates
+            
+            # if start_button is starting this frame...
+            if start_button.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
+                # keep track of start time/frame for later
+                start_button.frameNStart = frameN  # exact frame index
+                start_button.tStart = t  # local t and not account for scr refresh
+                start_button.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(start_button, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'start_button.started')
+                # update status
+                start_button.status = STARTED
+                start_button.setAutoDraw(True)
+            
+            # if start_button is active this frame...
+            if start_button.status == STARTED:
+                # update params
+                pass
+                # check whether start_button has been pressed
+                if start_button.isClicked:
+                    if not start_button.wasClicked:
+                        # if this is a new click, store time of first click and clicked until
+                        start_button.timesOn.append(start_button.buttonClock.getTime())
+                        start_button.timesOff.append(start_button.buttonClock.getTime())
+                    elif len(start_button.timesOff):
+                        # if click is continuing from last frame, update time of clicked until
+                        start_button.timesOff[-1] = start_button.buttonClock.getTime()
+                    if not start_button.wasClicked:
+                        # end routine when start_button is clicked
+                        continueRoutine = False
+                    if not start_button.wasClicked:
+                        # run callback code when start_button is clicked
+                        global start_exp_button
+                        start_exp_button = True
+            # take note of whether start_button was clicked, so that next frame we know if clicks are new
+            start_button.wasClicked = start_button.isClicked and start_button.status == STARTED
+            
+            # check for quit (typically the Esc key)
+            if defaultKeyboard.getKeys(keyList=["escape"]):
+                thisExp.status = FINISHED
+            if thisExp.status == FINISHED or endExpNow:
+                endExperiment(thisExp, inputs=inputs, win=win)
+                return
+            
+            # check if all components have finished
+            if not continueRoutine:  # a component has requested a forced-end of Routine
+                routineForceEnded = True
+                break
+            continueRoutine = False  # will revert to True if at least one component still running
+            for thisComponent in WelcomeScreenComponents:
+                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                    continueRoutine = True
+                    break  # at least one component has not yet finished
+            
+            # refresh the screen
+            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+                win.flip()
+        
+        # --- Ending Routine "WelcomeScreen" ---
+        for thisComponent in WelcomeScreenComponents:
+            if hasattr(thisComponent, "setAutoDraw"):
+                thisComponent.setAutoDraw(False)
+        thisExp.addData('WelcomeScreen.stopped', globalClock.getTime())
+        return_to_homepage.addData('about_button.numClicks', about_button.numClicks)
+        if about_button.numClicks:
+           return_to_homepage.addData('about_button.timesOn', about_button.timesOn)
+           return_to_homepage.addData('about_button.timesOff', about_button.timesOff)
+        else:
+           return_to_homepage.addData('about_button.timesOn', "")
+           return_to_homepage.addData('about_button.timesOff', "")
+        return_to_homepage.addData('start_button.numClicks', start_button.numClicks)
+        if start_button.numClicks:
+           return_to_homepage.addData('start_button.timesOn', start_button.timesOn)
+           return_to_homepage.addData('start_button.timesOff', start_button.timesOff)
+        else:
+           return_to_homepage.addData('start_button.timesOn', "")
+           return_to_homepage.addData('start_button.timesOff', "")
+        # Run 'End Routine' code from code_7
+        cur_row = 0
+        button_pressed = "none"
+        show_instructions = 1
+        max_slides = 6
+        # the Routine "WelcomeScreen" was not non-slip safe, so reset the non-slip timer
+        routineTimer.reset()
+        
+        # set up handler to look after randomisation of conditions etc
+        instructions_controller = data.TrialHandler(nReps=9999.0, method='random', 
+            extraInfo=expInfo, originPath=-1,
+            trialList=[None],
+            seed=None, name='instructions_controller')
+        thisExp.addLoop(instructions_controller)  # add the loop to the experiment
+        thisInstructions_controller = instructions_controller.trialList[0]  # so we can initialise stimuli with some values
+        # abbreviate parameter names if possible (e.g. rgb = thisInstructions_controller.rgb)
+        if thisInstructions_controller != None:
+            for paramName in thisInstructions_controller:
+                globals()[paramName] = thisInstructions_controller[paramName]
+        
+        for thisInstructions_controller in instructions_controller:
+            currentLoop = instructions_controller
+            thisExp.timestampOnFlip(win, 'thisRow.t')
+            # pause experiment here if requested
+            if thisExp.status == PAUSED:
+                pauseExperiment(
+                    thisExp=thisExp, 
+                    inputs=inputs, 
+                    win=win, 
+                    timers=[routineTimer], 
+                    playbackComponents=[]
+            )
+            # abbreviate parameter names if possible (e.g. rgb = thisInstructions_controller.rgb)
+            if thisInstructions_controller != None:
+                for paramName in thisInstructions_controller:
+                    globals()[paramName] = thisInstructions_controller[paramName]
+            
+            # --- Prepare to start Routine "instructionprep" ---
+            continueRoutine = True
+            # update component parameters for each repeat
+            thisExp.addData('instructionprep.started', globalClock.getTime())
+            # Run 'Begin Routine' code from code_2
+            if (about_exp_button == False) :
+                instructions_controller.finished = 1
+                show_instructions = 0
+                cur_row = max_slides
+            if(button_pressed == "next"):
+                cur_row += 1 
+             
+            elif (button_pressed == "back"):
+                cur_row -= 1 
+            button_pressed = "none"
+            
+            if (cur_row < 0) :
+                cur_row = 0 
+             
+            if (cur_row > max_slides) :
+                instructions_controller.finished = 1
+                show_instructions = 0
+                cur_row = max_slides
+                
+                    
+            # keep track of which components have finished
+            instructionprepComponents = []
+            for thisComponent in instructionprepComponents:
+                thisComponent.tStart = None
+                thisComponent.tStop = None
+                thisComponent.tStartRefresh = None
+                thisComponent.tStopRefresh = None
+                if hasattr(thisComponent, 'status'):
+                    thisComponent.status = NOT_STARTED
+            # reset timers
+            t = 0
+            _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+            frameN = -1
+            
+            # --- Run Routine "instructionprep" ---
+            routineForceEnded = not continueRoutine
+            while continueRoutine:
+                # get current time
+                t = routineTimer.getTime()
+                tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+                tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+                frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+                # update/draw components on each frame
+                
+                # check for quit (typically the Esc key)
+                if defaultKeyboard.getKeys(keyList=["escape"]):
+                    thisExp.status = FINISHED
+                if thisExp.status == FINISHED or endExpNow:
+                    endExperiment(thisExp, inputs=inputs, win=win)
+                    return
+                
+                # check if all components have finished
+                if not continueRoutine:  # a component has requested a forced-end of Routine
+                    routineForceEnded = True
+                    break
+                continueRoutine = False  # will revert to True if at least one component still running
+                for thisComponent in instructionprepComponents:
+                    if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                        continueRoutine = True
+                        break  # at least one component has not yet finished
+                
+                # refresh the screen
+                if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+                    win.flip()
+            
+            # --- Ending Routine "instructionprep" ---
+            for thisComponent in instructionprepComponents:
+                if hasattr(thisComponent, "setAutoDraw"):
+                    thisComponent.setAutoDraw(False)
+            thisExp.addData('instructionprep.stopped', globalClock.getTime())
+            # the Routine "instructionprep" was not non-slip safe, so reset the non-slip timer
+            routineTimer.reset()
+            
+            # set up handler to look after randomisation of conditions etc
+            about_slide_loop = data.TrialHandler(nReps=show_instructions, method='random', 
+                extraInfo=expInfo, originPath=-1,
+                trialList=data.importConditions('slide_order.xlsx', selection=str(cur_row)),
+                seed=None, name='about_slide_loop')
+            thisExp.addLoop(about_slide_loop)  # add the loop to the experiment
+            thisAbout_slide_loop = about_slide_loop.trialList[0]  # so we can initialise stimuli with some values
+            # abbreviate parameter names if possible (e.g. rgb = thisAbout_slide_loop.rgb)
+            if thisAbout_slide_loop != None:
+                for paramName in thisAbout_slide_loop:
+                    globals()[paramName] = thisAbout_slide_loop[paramName]
+            
+            for thisAbout_slide_loop in about_slide_loop:
+                currentLoop = about_slide_loop
+                thisExp.timestampOnFlip(win, 'thisRow.t')
+                # pause experiment here if requested
+                if thisExp.status == PAUSED:
+                    pauseExperiment(
+                        thisExp=thisExp, 
+                        inputs=inputs, 
+                        win=win, 
+                        timers=[routineTimer], 
+                        playbackComponents=[]
+                )
+                # abbreviate parameter names if possible (e.g. rgb = thisAbout_slide_loop.rgb)
+                if thisAbout_slide_loop != None:
+                    for paramName in thisAbout_slide_loop:
+                        globals()[paramName] = thisAbout_slide_loop[paramName]
+                
+                # --- Prepare to start Routine "AboutExpScreen" ---
+                continueRoutine = True
+                # update component parameters for each repeat
+                thisExp.addData('AboutExpScreen.started', globalClock.getTime())
+                image_instruction.setImage(about_slide)
+                # reset next_button to account for continued clicks & clear times on/off
+                next_button.reset()
+                # reset back_button to account for continued clicks & clear times on/off
+                back_button.reset()
+                # keep track of which components have finished
+                AboutExpScreenComponents = [image_instruction, next_button, back_button]
+                for thisComponent in AboutExpScreenComponents:
+                    thisComponent.tStart = None
+                    thisComponent.tStop = None
+                    thisComponent.tStartRefresh = None
+                    thisComponent.tStopRefresh = None
+                    if hasattr(thisComponent, 'status'):
+                        thisComponent.status = NOT_STARTED
+                # reset timers
+                t = 0
+                _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+                frameN = -1
+                
+                # --- Run Routine "AboutExpScreen" ---
+                routineForceEnded = not continueRoutine
+                while continueRoutine:
+                    # get current time
+                    t = routineTimer.getTime()
+                    tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+                    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+                    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+                    # update/draw components on each frame
+                    
+                    # *image_instruction* updates
+                    
+                    # if image_instruction is starting this frame...
+                    if image_instruction.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                        # keep track of start time/frame for later
+                        image_instruction.frameNStart = frameN  # exact frame index
+                        image_instruction.tStart = t  # local t and not account for scr refresh
+                        image_instruction.tStartRefresh = tThisFlipGlobal  # on global time
+                        win.timeOnFlip(image_instruction, 'tStartRefresh')  # time at next scr refresh
+                        # add timestamp to datafile
+                        thisExp.timestampOnFlip(win, 'image_instruction.started')
+                        # update status
+                        image_instruction.status = STARTED
+                        image_instruction.setAutoDraw(True)
+                    
+                    # if image_instruction is active this frame...
+                    if image_instruction.status == STARTED:
+                        # update params
+                        pass
+                    # *next_button* updates
+                    
+                    # if next_button is starting this frame...
+                    if next_button.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
+                        # keep track of start time/frame for later
+                        next_button.frameNStart = frameN  # exact frame index
+                        next_button.tStart = t  # local t and not account for scr refresh
+                        next_button.tStartRefresh = tThisFlipGlobal  # on global time
+                        win.timeOnFlip(next_button, 'tStartRefresh')  # time at next scr refresh
+                        # add timestamp to datafile
+                        thisExp.timestampOnFlip(win, 'next_button.started')
+                        # update status
+                        next_button.status = STARTED
+                        next_button.setAutoDraw(True)
+                    
+                    # if next_button is active this frame...
+                    if next_button.status == STARTED:
+                        # update params
+                        pass
+                        # check whether next_button has been pressed
+                        if next_button.isClicked:
+                            if not next_button.wasClicked:
+                                # if this is a new click, store time of first click and clicked until
+                                next_button.timesOn.append(next_button.buttonClock.getTime())
+                                next_button.timesOff.append(next_button.buttonClock.getTime())
+                            elif len(next_button.timesOff):
+                                # if click is continuing from last frame, update time of clicked until
+                                next_button.timesOff[-1] = next_button.buttonClock.getTime()
+                            if not next_button.wasClicked:
+                                # end routine when next_button is clicked
+                                continueRoutine = False
+                            if not next_button.wasClicked:
+                                # run callback code when next_button is clicked
+                                button_pressed = "next"
+                    # take note of whether next_button was clicked, so that next frame we know if clicks are new
+                    next_button.wasClicked = next_button.isClicked and next_button.status == STARTED
+                    # *back_button* updates
+                    
+                    # if back_button is starting this frame...
+                    if back_button.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
+                        # keep track of start time/frame for later
+                        back_button.frameNStart = frameN  # exact frame index
+                        back_button.tStart = t  # local t and not account for scr refresh
+                        back_button.tStartRefresh = tThisFlipGlobal  # on global time
+                        win.timeOnFlip(back_button, 'tStartRefresh')  # time at next scr refresh
+                        # add timestamp to datafile
+                        thisExp.timestampOnFlip(win, 'back_button.started')
+                        # update status
+                        back_button.status = STARTED
+                        back_button.setAutoDraw(True)
+                    
+                    # if back_button is active this frame...
+                    if back_button.status == STARTED:
+                        # update params
+                        pass
+                        # check whether back_button has been pressed
+                        if back_button.isClicked:
+                            if not back_button.wasClicked:
+                                # if this is a new click, store time of first click and clicked until
+                                back_button.timesOn.append(back_button.buttonClock.getTime())
+                                back_button.timesOff.append(back_button.buttonClock.getTime())
+                            elif len(back_button.timesOff):
+                                # if click is continuing from last frame, update time of clicked until
+                                back_button.timesOff[-1] = back_button.buttonClock.getTime()
+                            if not back_button.wasClicked:
+                                # end routine when back_button is clicked
+                                continueRoutine = False
+                            if not back_button.wasClicked:
+                                # run callback code when back_button is clicked
+                                button_pressed = "back"
+                    # take note of whether back_button was clicked, so that next frame we know if clicks are new
+                    back_button.wasClicked = back_button.isClicked and back_button.status == STARTED
+                    
+                    # check for quit (typically the Esc key)
+                    if defaultKeyboard.getKeys(keyList=["escape"]):
+                        thisExp.status = FINISHED
+                    if thisExp.status == FINISHED or endExpNow:
+                        endExperiment(thisExp, inputs=inputs, win=win)
+                        return
+                    
+                    # check if all components have finished
+                    if not continueRoutine:  # a component has requested a forced-end of Routine
+                        routineForceEnded = True
+                        break
+                    continueRoutine = False  # will revert to True if at least one component still running
+                    for thisComponent in AboutExpScreenComponents:
+                        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                            continueRoutine = True
+                            break  # at least one component has not yet finished
+                    
+                    # refresh the screen
+                    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+                        win.flip()
+                
+                # --- Ending Routine "AboutExpScreen" ---
+                for thisComponent in AboutExpScreenComponents:
+                    if hasattr(thisComponent, "setAutoDraw"):
+                        thisComponent.setAutoDraw(False)
+                thisExp.addData('AboutExpScreen.stopped', globalClock.getTime())
+                about_slide_loop.addData('next_button.numClicks', next_button.numClicks)
+                if next_button.numClicks:
+                   about_slide_loop.addData('next_button.timesOn', next_button.timesOn)
+                   about_slide_loop.addData('next_button.timesOff', next_button.timesOff)
+                else:
+                   about_slide_loop.addData('next_button.timesOn', "")
+                   about_slide_loop.addData('next_button.timesOff', "")
+                about_slide_loop.addData('back_button.numClicks', back_button.numClicks)
+                if back_button.numClicks:
+                   about_slide_loop.addData('back_button.timesOn', back_button.timesOn)
+                   about_slide_loop.addData('back_button.timesOff', back_button.timesOff)
+                else:
+                   about_slide_loop.addData('back_button.timesOn', "")
+                   about_slide_loop.addData('back_button.timesOff', "")
+                # the Routine "AboutExpScreen" was not non-slip safe, so reset the non-slip timer
+                routineTimer.reset()
+            # completed show_instructions repeats of 'about_slide_loop'
+            
+        # completed 9999.0 repeats of 'instructions_controller'
+        
+        
+        # --- Prepare to start Routine "WarningScreen" ---
+        continueRoutine = True
+        # update component parameters for each repeat
+        thisExp.addData('WarningScreen.started', globalClock.getTime())
+        # skip this Routine if its 'Skip if' condition is True
+        continueRoutine = continueRoutine and not ((homeButton == False) and (newSession == False))
+        # reset button to account for continued clicks & clear times on/off
+        button.reset()
+        # Run 'Begin Routine' code from code_6
+        warning_heading.bold = True
+        # keep track of which components have finished
+        WarningScreenComponents = [white_background, welcome_message, caution_sign, button, warning_heading]
+        for thisComponent in WarningScreenComponents:
+            thisComponent.tStart = None
+            thisComponent.tStop = None
+            thisComponent.tStartRefresh = None
+            thisComponent.tStopRefresh = None
+            if hasattr(thisComponent, 'status'):
+                thisComponent.status = NOT_STARTED
+        # reset timers
+        t = 0
+        _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+        frameN = -1
+        
+        # --- Run Routine "WarningScreen" ---
+        routineForceEnded = not continueRoutine
+        while continueRoutine:
+            # get current time
+            t = routineTimer.getTime()
+            tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+            tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+            # update/draw components on each frame
+            
+            # *white_background* updates
+            
+            # if white_background is starting this frame...
+            if white_background.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                white_background.frameNStart = frameN  # exact frame index
+                white_background.tStart = t  # local t and not account for scr refresh
+                white_background.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(white_background, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'white_background.started')
+                # update status
+                white_background.status = STARTED
+                white_background.setAutoDraw(True)
+            
+            # if white_background is active this frame...
+            if white_background.status == STARTED:
+                # update params
+                pass
+            
+            # *welcome_message* updates
+            
+            # if welcome_message is starting this frame...
+            if welcome_message.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                welcome_message.frameNStart = frameN  # exact frame index
+                welcome_message.tStart = t  # local t and not account for scr refresh
+                welcome_message.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(welcome_message, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'welcome_message.started')
+                # update status
+                welcome_message.status = STARTED
+                welcome_message.setAutoDraw(True)
+            
+            # if welcome_message is active this frame...
+            if welcome_message.status == STARTED:
+                # update params
+                welcome_message.setText('\n\nThis experiment entails the observation of flickering objects. Individuals with a predisposition to epilepsy or other visual sensitivities are advised to exercise caution or to abstain from participation. We cannot assume liability for any discomfort or complications that may ensue.\n\n\n', log=False)
+            
+            # *caution_sign* updates
+            
+            # if caution_sign is starting this frame...
+            if caution_sign.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                caution_sign.frameNStart = frameN  # exact frame index
+                caution_sign.tStart = t  # local t and not account for scr refresh
+                caution_sign.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(caution_sign, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'caution_sign.started')
+                # update status
+                caution_sign.status = STARTED
+                caution_sign.setAutoDraw(True)
+            
+            # if caution_sign is active this frame...
+            if caution_sign.status == STARTED:
+                # update params
+                pass
+            # *button* updates
+            
+            # if button is starting this frame...
+            if button.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
+                # keep track of start time/frame for later
+                button.frameNStart = frameN  # exact frame index
+                button.tStart = t  # local t and not account for scr refresh
+                button.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(button, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'button.started')
+                # update status
+                button.status = STARTED
+                button.setAutoDraw(True)
+            
+            # if button is active this frame...
+            if button.status == STARTED:
+                # update params
+                pass
+                # check whether button has been pressed
+                if button.isClicked:
+                    if not button.wasClicked:
+                        # if this is a new click, store time of first click and clicked until
+                        button.timesOn.append(button.buttonClock.getTime())
+                        button.timesOff.append(button.buttonClock.getTime())
+                    elif len(button.timesOff):
+                        # if click is continuing from last frame, update time of clicked until
+                        button.timesOff[-1] = button.buttonClock.getTime()
+                    if not button.wasClicked:
+                        # end routine when button is clicked
+                        continueRoutine = False
+                    if not button.wasClicked:
+                        # run callback code when button is clicked
+                        pass
+            # take note of whether button was clicked, so that next frame we know if clicks are new
+            button.wasClicked = button.isClicked and button.status == STARTED
+            
+            # *warning_heading* updates
+            
+            # if warning_heading is starting this frame...
+            if warning_heading.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                warning_heading.frameNStart = frameN  # exact frame index
+                warning_heading.tStart = t  # local t and not account for scr refresh
+                warning_heading.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(warning_heading, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'warning_heading.started')
+                # update status
+                warning_heading.status = STARTED
+                warning_heading.setAutoDraw(True)
+            
+            # if warning_heading is active this frame...
+            if warning_heading.status == STARTED:
+                # update params
+                pass
+            
+            # check for quit (typically the Esc key)
+            if defaultKeyboard.getKeys(keyList=["escape"]):
+                thisExp.status = FINISHED
+            if thisExp.status == FINISHED or endExpNow:
+                endExperiment(thisExp, inputs=inputs, win=win)
+                return
+            
+            # check if all components have finished
+            if not continueRoutine:  # a component has requested a forced-end of Routine
+                routineForceEnded = True
+                break
+            continueRoutine = False  # will revert to True if at least one component still running
+            for thisComponent in WarningScreenComponents:
+                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                    continueRoutine = True
+                    break  # at least one component has not yet finished
+            
+            # refresh the screen
+            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+                win.flip()
+        
+        # --- Ending Routine "WarningScreen" ---
+        for thisComponent in WarningScreenComponents:
+            if hasattr(thisComponent, "setAutoDraw"):
+                thisComponent.setAutoDraw(False)
+        thisExp.addData('WarningScreen.stopped', globalClock.getTime())
+        return_to_homepage.addData('button.numClicks', button.numClicks)
+        if button.numClicks:
+           return_to_homepage.addData('button.timesOn', button.timesOn)
+           return_to_homepage.addData('button.timesOff', button.timesOff)
+        else:
+           return_to_homepage.addData('button.timesOn', "")
+           return_to_homepage.addData('button.timesOff', "")
+        # Run 'End Routine' code from code_6
+        skip = False
+        # the Routine "WarningScreen" was not non-slip safe, so reset the non-slip timer
+        routineTimer.reset()
+        
+        # --- Prepare to start Routine "GameDet" ---
+        continueRoutine = True
+        # update component parameters for each repeat
+        thisExp.addData('GameDet.started', globalClock.getTime())
+        # skip this Routine if its 'Skip if' condition is True
+        continueRoutine = continueRoutine and not ((skip == True) or ((homeButton == False) and (newSession == False)))
+        # reset Skip to account for continued clicks & clear times on/off
+        Skip.reset()
+        # keep track of which components have finished
+        GameDetComponents = [MindBattle, explanation, Skip]
+        for thisComponent in GameDetComponents:
+            thisComponent.tStart = None
+            thisComponent.tStop = None
+            thisComponent.tStartRefresh = None
+            thisComponent.tStopRefresh = None
+            if hasattr(thisComponent, 'status'):
+                thisComponent.status = NOT_STARTED
+        # reset timers
+        t = 0
+        _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+        frameN = -1
+        
+        # --- Run Routine "GameDet" ---
+        routineForceEnded = not continueRoutine
+        while continueRoutine:
+            # get current time
+            t = routineTimer.getTime()
+            tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+            tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+            # update/draw components on each frame
+            
+            # *MindBattle* updates
+            
+            # if MindBattle is starting this frame...
+            if MindBattle.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                MindBattle.frameNStart = frameN  # exact frame index
+                MindBattle.tStart = t  # local t and not account for scr refresh
+                MindBattle.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(MindBattle, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'MindBattle.started')
+                # update status
+                MindBattle.status = STARTED
+                MindBattle.setAutoDraw(True)
+            
+            # if MindBattle is active this frame...
+            if MindBattle.status == STARTED:
+                # update params
+                pass
+            
+            # *explanation* updates
+            
+            # if explanation is starting this frame...
+            if explanation.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                explanation.frameNStart = frameN  # exact frame index
+                explanation.tStart = t  # local t and not account for scr refresh
+                explanation.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(explanation, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'explanation.started')
+                # update status
+                explanation.status = STARTED
+                explanation.setAutoDraw(True)
+            
+            # if explanation is active this frame...
+            if explanation.status == STARTED:
+                # update params
+                pass
+            # *Skip* updates
+            
+            # if Skip is starting this frame...
+            if Skip.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
+                # keep track of start time/frame for later
+                Skip.frameNStart = frameN  # exact frame index
+                Skip.tStart = t  # local t and not account for scr refresh
+                Skip.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(Skip, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'Skip.started')
+                # update status
+                Skip.status = STARTED
+                Skip.setAutoDraw(True)
+            
+            # if Skip is active this frame...
+            if Skip.status == STARTED:
+                # update params
+                pass
+                # check whether Skip has been pressed
+                if Skip.isClicked:
+                    if not Skip.wasClicked:
+                        # if this is a new click, store time of first click and clicked until
+                        Skip.timesOn.append(Skip.buttonClock.getTime())
+                        Skip.timesOff.append(Skip.buttonClock.getTime())
+                    elif len(Skip.timesOff):
+                        # if click is continuing from last frame, update time of clicked until
+                        Skip.timesOff[-1] = Skip.buttonClock.getTime()
+                    if not Skip.wasClicked:
+                        # end routine when Skip is clicked
+                        continueRoutine = False
+                    if not Skip.wasClicked:
+                        # run callback code when Skip is clicked
+                        skip = True
+            # take note of whether Skip was clicked, so that next frame we know if clicks are new
+            Skip.wasClicked = Skip.isClicked and Skip.status == STARTED
+            
+            # check for quit (typically the Esc key)
+            if defaultKeyboard.getKeys(keyList=["escape"]):
+                thisExp.status = FINISHED
+            if thisExp.status == FINISHED or endExpNow:
+                endExperiment(thisExp, inputs=inputs, win=win)
+                return
+            
+            # check if all components have finished
+            if not continueRoutine:  # a component has requested a forced-end of Routine
+                routineForceEnded = True
+                break
+            continueRoutine = False  # will revert to True if at least one component still running
+            for thisComponent in GameDetComponents:
+                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                    continueRoutine = True
+                    break  # at least one component has not yet finished
+            
+            # refresh the screen
+            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+                win.flip()
+        
+        # --- Ending Routine "GameDet" ---
+        for thisComponent in GameDetComponents:
+            if hasattr(thisComponent, "setAutoDraw"):
+                thisComponent.setAutoDraw(False)
+        thisExp.addData('GameDet.stopped', globalClock.getTime())
+        return_to_homepage.addData('Skip.numClicks', Skip.numClicks)
+        if Skip.numClicks:
+           return_to_homepage.addData('Skip.timesOn', Skip.timesOn)
+           return_to_homepage.addData('Skip.timesOff', Skip.timesOff)
+        else:
+           return_to_homepage.addData('Skip.timesOn', "")
+           return_to_homepage.addData('Skip.timesOff', "")
+        # the Routine "GameDet" was not non-slip safe, so reset the non-slip timer
+        routineTimer.reset()
+        
         # --- Prepare to start Routine "PickTest" ---
         continueRoutine = True
         # update component parameters for each repeat
@@ -2069,11 +2097,15 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         button_t4.reset()
         # reset button_all to account for continued clicks & clear times on/off
         button_all.reset()
+        # reset home_button to account for continued clicks & clear times on/off
+        home_button.reset()
         # Run 'Begin Routine' code from code_5
         text.bold = True
         lose = False
+        homeButton = False
+        newSession = False
         # keep track of which components have finished
-        PickTestComponents = [brain_animation, button_t1, button_t2, button_t3, button_t4, button_all, text]
+        PickTestComponents = [brain_animation, button_t1, button_t2, button_t3, button_t4, button_all, home_button, text]
         for thisComponent in PickTestComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -2298,6 +2330,42 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                         buttont4= True
             # take note of whether button_all was clicked, so that next frame we know if clicks are new
             button_all.wasClicked = button_all.isClicked and button_all.status == STARTED
+            # *home_button* updates
+            
+            # if home_button is starting this frame...
+            if home_button.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
+                # keep track of start time/frame for later
+                home_button.frameNStart = frameN  # exact frame index
+                home_button.tStart = t  # local t and not account for scr refresh
+                home_button.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(home_button, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'home_button.started')
+                # update status
+                home_button.status = STARTED
+                home_button.setAutoDraw(True)
+            
+            # if home_button is active this frame...
+            if home_button.status == STARTED:
+                # update params
+                pass
+                # check whether home_button has been pressed
+                if home_button.isClicked:
+                    if not home_button.wasClicked:
+                        # if this is a new click, store time of first click and clicked until
+                        home_button.timesOn.append(home_button.buttonClock.getTime())
+                        home_button.timesOff.append(home_button.buttonClock.getTime())
+                    elif len(home_button.timesOff):
+                        # if click is continuing from last frame, update time of clicked until
+                        home_button.timesOff[-1] = home_button.buttonClock.getTime()
+                    if not home_button.wasClicked:
+                        # end routine when home_button is clicked
+                        continueRoutine = False
+                    if not home_button.wasClicked:
+                        # run callback code when home_button is clicked
+                        homeButton = True
+            # take note of whether home_button was clicked, so that next frame we know if clicks are new
+            home_button.wasClicked = home_button.isClicked and home_button.status == STARTED
             
             # *text* updates
             
@@ -2381,6 +2449,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         else:
            return_to_homepage.addData('button_all.timesOn', "")
            return_to_homepage.addData('button_all.timesOff', "")
+        return_to_homepage.addData('home_button.numClicks', home_button.numClicks)
+        if home_button.numClicks:
+           return_to_homepage.addData('home_button.timesOn', home_button.timesOn)
+           return_to_homepage.addData('home_button.timesOff', home_button.timesOff)
+        else:
+           return_to_homepage.addData('home_button.timesOn', "")
+           return_to_homepage.addData('home_button.timesOff', "")
         # the Routine "PickTest" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
@@ -2451,8 +2526,6 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # Run 'Begin Routine' code from test_1_code
                 #Start aquiring data
                 #startTest(dur_test1)
-                
-                home_button = False
                 
                 # Frequencies for each trial
                 freq_trials = [[15], #Trial 1 frequency
@@ -5498,7 +5571,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         # update component parameters for each repeat
         thisExp.addData('earth_win.started', globalClock.getTime())
         # skip this Routine if its 'Skip if' condition is True
-        continueRoutine = continueRoutine and not (lose == True)
+        continueRoutine = continueRoutine and not (lose == True or homeButton == True)
         # keep track of which components have finished
         earth_winComponents = [earth_win_2, win_message]
         for thisComponent in earth_winComponents:
@@ -5623,7 +5696,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         # update component parameters for each repeat
         thisExp.addData('earth_lose.started', globalClock.getTime())
         # skip this Routine if its 'Skip if' condition is True
-        continueRoutine = continueRoutine and not (lose == False)
+        continueRoutine = continueRoutine and not (lose == False or homeButton == True)
         # keep track of which components have finished
         earth_loseComponents = [earth_lose_2, lose_message]
         for thisComponent in earth_loseComponents:
@@ -5753,6 +5826,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         buttont3 = False
         buttont4 = False
         start_exp_button = False
+        about_exp_button = False
         # keep track of which components have finished
         reset_buttonsComponents = []
         for thisComponent in reset_buttonsComponents:
@@ -5810,7 +5884,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         if thisSession is not None:
             # if running in a Session with a Liaison client, send data up to now
             thisSession.sendExperimentData()
-    # completed 10.0 repeats of 'return_to_homepage'
+    # completed 100.0 repeats of 'return_to_homepage'
     
     
     # --- Prepare to start Routine "GoodBye" ---
@@ -5818,7 +5892,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     # update component parameters for each repeat
     thisExp.addData('GoodBye.started', globalClock.getTime())
     # keep track of which components have finished
-    GoodByeComponents = []
+    GoodByeComponents = [text_2]
     for thisComponent in GoodByeComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -5833,13 +5907,46 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     
     # --- Run Routine "GoodBye" ---
     routineForceEnded = not continueRoutine
-    while continueRoutine:
+    while continueRoutine and routineTimer.getTime() < 4.0:
         # get current time
         t = routineTimer.getTime()
         tThisFlip = win.getFutureFlipTime(clock=routineTimer)
         tThisFlipGlobal = win.getFutureFlipTime(clock=None)
         frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
         # update/draw components on each frame
+        
+        # *text_2* updates
+        
+        # if text_2 is starting this frame...
+        if text_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            text_2.frameNStart = frameN  # exact frame index
+            text_2.tStart = t  # local t and not account for scr refresh
+            text_2.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(text_2, 'tStartRefresh')  # time at next scr refresh
+            # add timestamp to datafile
+            thisExp.timestampOnFlip(win, 'text_2.started')
+            # update status
+            text_2.status = STARTED
+            text_2.setAutoDraw(True)
+        
+        # if text_2 is active this frame...
+        if text_2.status == STARTED:
+            # update params
+            pass
+        
+        # if text_2 is stopping this frame...
+        if text_2.status == STARTED:
+            # is it time to stop? (based on global clock, using actual start)
+            if tThisFlipGlobal > text_2.tStartRefresh + 4-frameTolerance:
+                # keep track of stop time/frame for later
+                text_2.tStop = t  # not accounting for scr refresh
+                text_2.frameNStop = frameN  # exact frame index
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'text_2.stopped')
+                # update status
+                text_2.status = FINISHED
+                text_2.setAutoDraw(False)
         
         # check for quit (typically the Esc key)
         if defaultKeyboard.getKeys(keyList=["escape"]):
@@ -5867,8 +5974,11 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     thisExp.addData('GoodBye.stopped', globalClock.getTime())
-    # the Routine "GoodBye" was not non-slip safe, so reset the non-slip timer
-    routineTimer.reset()
+    # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
+    if routineForceEnded:
+        routineTimer.reset()
+    else:
+        routineTimer.addTime(-4.000000)
     
     # mark experiment as finished
     endExperiment(thisExp, win=win, inputs=inputs)
