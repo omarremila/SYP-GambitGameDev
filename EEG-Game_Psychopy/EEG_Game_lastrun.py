@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.2.3),
-    on April 07, 2024, at 00:07
+    on April 07, 2024, at 08:58
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -89,7 +89,7 @@ def flickerObjects(objects, freqs, frameN):
     for i in range(len(objects)): #loop through all objects
         frames_per_cycle = 60 // freqs[i]
         objects[i].opacity = (((frameN) % frames_per_cycle) < (frames_per_cycle / 2))
-        
+
 #Check if frequency is correct range     
 def compareFreq(EEGdata, freq):
     DELTA = 0
@@ -98,8 +98,10 @@ def compareFreq(EEGdata, freq):
     BETA = 3
     GAMMA = 4
     
-    freq_band = np.argmax(EEGdata)
-    print(freq_band)
+    #freq_band = np.argmax(EEGdata)
+    filtered_EEG = theta_beta_pass(EEGdata) #Cannot create delta or gamma bands right now
+    freq_band = np.argmax(filtered_EEG)
+    print(filtered_EEG)
     
     if (freq_band == DELTA) and (0 <= freq < 4):
         return True 
@@ -113,7 +115,12 @@ def compareFreq(EEGdata, freq):
         return True
     else:
         return False
-     
+    
+def theta_beta_pass(data):
+    band_pass = data
+    band_pass[0] = 0
+    band_pass[4] = 0
+    return band_pass
 # --- Setup global variables (available in all functions) ---
 # Ensure that relative paths start from the same directory as this script
 _thisDir = os.path.dirname(os.path.abspath(__file__))
@@ -2535,8 +2542,8 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 
                 
                 # Frequencies for each trial
-                freq_trials = [[15], #Trial 1 frequency
-                            [16],   #Trial 2 frequency
+                freq_trials = [[10], #Trial 1 frequency
+                            [9],   #Trial 2 frequency
                             [1],  #Trial 3 frequency
                             [15],  #Trial 4 frequency
                             [15],  #Trial 5 frequency
@@ -5582,7 +5589,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         # skip this Routine if its 'Skip if' condition is True
         continueRoutine = continueRoutine and not (lose == True or homeButton == True)
         # Run 'Begin Routine' code from code_8
-        win_message.text = str(EEGdata)
+        #win_message.text = str(EEGdata)
         # keep track of which components have finished
         earth_winComponents = [earth_win_2, win_message]
         for thisComponent in earth_winComponents:
@@ -5709,7 +5716,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         # skip this Routine if its 'Skip if' condition is True
         continueRoutine = continueRoutine and not (lose == False or homeButton == True)
         # Run 'Begin Routine' code from code_9
-        lose_message.text = str(EEGdata)
+        #lose_message.text = str(EEGdata)
         # keep track of which components have finished
         earth_loseComponents = [earth_lose_2, lose_message]
         for thisComponent in earth_loseComponents:
