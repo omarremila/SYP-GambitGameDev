@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.2.3),
-    on April 07, 2024, at 08:58
+    on April 07, 2024, at 13:11
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -37,44 +37,6 @@ from psychopy.hardware import keyboard
 import collecting_bands
 import threading
 import numpy as np
-
-#Set number of repetitions  for each test
-global_rep_num = 1
-rep_num1 = global_rep_num
-rep_num2 = global_rep_num
-rep_num3 = global_rep_num
-rep_num4 = global_rep_num
-
-#Set number of trials for each test
-global_trial_num = 2
-trial_num1 = global_trial_num
-trial_num2 = global_trial_num
-trial_num3 = global_trial_num
-trial_num4 = global_trial_num
-
-#Set duration of repetitions for each test
-global_dur_test = 5
-dur_test1 = global_dur_test
-dur_test2 = global_dur_test
-dur_test3 = global_dur_test
-dur_test4 = global_dur_test
-
-#Size/position of display objects including ship, target boxes and backgrounds
-ship_size = (0.15, 0.15)
-box_size = (0.15, 0.075)
-game_back_size = (1.75, 1)
-game_back_pos = (-0.1, 0)
-home_back_size = (1.5, 1.2)
-warning_back_size = (1.5, 1) #Current window size
-gameDet_back_size = (1.5, 1)
-pickTest_back_size = (1.5, 1)
-about_back_size = (1.5, 1)
-
-#Duration after a repetition
-dur_blank = 2
-
-#Duration of win/lose screens
-dur_end = 3
 
 #Update display to show target object
 def selectTarget(objects, target):
@@ -246,7 +208,7 @@ def setupWindow(expInfo=None, win=None):
     if win is None:
         # if not given a window to setup, make one
         win = visual.Window(
-            size=[900, 600], fullscr=False, screen=0,
+            size=[1500, 1000], fullscr=False, screen=0,
             winType='pyglet', allowStencil=False,
             monitor='testMonitor', color=[0.0000, 0.0000, 0.0000], colorSpace='rgb',
             backgroundImage='', backgroundFit='none',
@@ -404,6 +366,59 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     
     # --- Initialize components for Routine "GlobalFunctions" ---
     # Run 'Begin Experiment' code from code
+    #Set number of repetitions  for each test
+    global_rep_num = 1
+    rep_num1 = global_rep_num
+    rep_num2 = global_rep_num
+    rep_num3 = global_rep_num
+    rep_num4 = global_rep_num
+    
+    #Set number of trials for each test
+    global_trial_num = 2
+    trial_num1 = global_trial_num
+    trial_num2 = global_trial_num
+    trial_num3 = global_trial_num
+    trial_num4 = global_trial_num
+    
+    #Set duration of repetitions for each test
+    global_dur_test = 5
+    dur_test1 = global_dur_test
+    dur_test2 = global_dur_test
+    dur_test3 = global_dur_test
+    dur_test4 = global_dur_test
+    
+    #Duration after a repetition
+    dur_blank = 2
+    #Duration of win/lose screens
+    dur_end = 3
+    
+    if (win.size[0] / win.size[1]) == 1.5: #Orientation normally used
+        #Size/position of display objects including ship, target boxes and backgrounds
+        ship_size = (0.15, 0.15)
+        box_size = (0.15, 0.075)
+        game_back_size = (1.75, 1)
+        game_back_pos = (-0.1, 0)
+        home_back_size = (1.55, 1.15)
+        home_back_pos = (0.02, 0)
+        warning_back_size = (1.5, 1)
+        gameDet_back_size = (1.5, 1)
+        pickTest_back_size = (1.5, 1)
+        about_back_size = (1.5, 1)
+    else: #full screen
+        #Size/position of display objects including ship, target boxes and backgrounds
+        ship_size = (0.15, 0.15)
+        box_size = (0.15, 0.075)
+        game_back_size = (2.1, 1.1)
+        game_back_pos = (-0.1, 0)
+        home_back_size = (1.85, 1.2)
+        home_back_pos = (0.023, 0)
+        warning_back_size = (1.9, 1) #Current window size
+        gameDet_back_size = (1.9, 1)
+        pickTest_back_size = (1.9, 1)
+        about_back_size = (1.9, 1)
+        
+        
+    
     #Create instance of band collection
     band_collector = collecting_bands.BandCollector()
     # Start the data collection thread immediately, it will run indefinitely
@@ -415,7 +430,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         win=win,
         name='homepage_image', 
         image='homepage_1.webp', mask=None, anchor='center',
-        ori=0.0, pos=(0, 0), size=home_back_size,
+        ori=0.0, pos=home_back_pos, size=home_back_size,
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=0.0)

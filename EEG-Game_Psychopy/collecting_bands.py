@@ -16,7 +16,7 @@ class BandCollector:
             self.focus_arr = np.zeros(5)
             self.start_test_flag = True
         # Start the timer thread
-        print("start")
+        #print("start")
         threading.Timer(timer_dur, self.end_test).start()
 
     def start_stream(self):
@@ -33,7 +33,7 @@ class BandCollector:
                     json_data = json.loads(received_data)
                     with self.lock:
                         self.focus_arr += np.array(json_data["data"])
-                        print(self.focus_arr)
+                        #print(self.focus_arr)
                 except json.JSONDecodeError:
                     print("Received data is not valid JSON.")
             time.sleep(0.01)
