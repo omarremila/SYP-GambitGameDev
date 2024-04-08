@@ -41,7 +41,9 @@ def handle_stream(port, file_name):
             print(f"Received {len(data)} bytes from {address}")
             # Write the data to a file
             file.write(data)
+            file.flush()  # Explicitly flush data to file
             # Here you might want to add a newline or other delimiter depending on your data format
+
 
 # Creating threads for each stream
 stream1_thread = threading.Thread(target=handle_stream, args=(12345, 'TimeSeries.json'))
