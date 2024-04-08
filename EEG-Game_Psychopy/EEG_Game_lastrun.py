@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.2.3),
-    on April 07, 2024, at 13:11
+    on April 08, 2024, at 12:04
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -65,15 +65,15 @@ def compareFreq(EEGdata, freq):
     freq_band = np.argmax(filtered_EEG)
     print(filtered_EEG)
     
-    if (freq_band == DELTA) and (0 <= freq < 4):
+    if (freq_band == DELTA) and (0 <= freq < 5):
         return True 
-    elif (freq_band == THETA) and (4 <= freq < 8):
+    elif (freq_band == THETA) and (5 <= freq < 9):
         return True 
-    elif (freq_band == ALPHA) and (8 <= freq < 12):
+    elif (freq_band == ALPHA) and (9 <= freq < 13):
         return True 
-    elif (freq_band == BETA) and (12 <= freq < 30):
+    elif (freq_band == BETA) and (13 <= freq < 32):
         return True
-    elif (freq_band == GAMMA) and (freq >= 30):
+    elif (freq_band == GAMMA) and (freq >= 32):
         return True
     else:
         return False
@@ -83,6 +83,12 @@ def theta_beta_pass(data):
     band_pass[0] = 0
     band_pass[4] = 0
     return band_pass
+
+def setFreqText(disp, freqs, target, objects):
+    disp.text = str(freqs[target]) + "Hz"
+    x = objects[target].pos[0]
+    y = objects[target].pos[1] + 0.07
+    disp.pos = (x, y)
 # --- Setup global variables (available in all functions) ---
 # Ensure that relative paths start from the same directory as this script
 _thisDir = os.path.dirname(os.path.abspath(__file__))
@@ -730,6 +736,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-4.0);
+    t1_freq = visual.TextStim(win=win, name='t1_freq',
+        text=None,
+        font='Open Sans',
+        pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=-6.0);
     
     # --- Initialize components for Routine "earth_pause_1" ---
     earth_blank_4 = visual.ImageStim(
@@ -830,6 +843,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-8.0);
+    t2_freq = visual.TextStim(win=win, name='t2_freq',
+        text=None,
+        font='Open Sans',
+        pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=-10.0);
     
     # --- Initialize components for Routine "earth_pause_2" ---
     earth_blank_3 = visual.ImageStim(
@@ -944,6 +964,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-10.0);
+    t3_freq = visual.TextStim(win=win, name='t3_freq',
+        text=None,
+        font='Open Sans',
+        pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=-12.0);
     
     # --- Initialize components for Routine "earth_pause_3" ---
     earth_blank_2 = visual.ImageStim(
@@ -1128,6 +1155,13 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-20.0);
+    t4_freq = visual.TextStim(win=win, name='t4_freq',
+        text=None,
+        font='Open Sans',
+        pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=-22.0);
     
     # --- Initialize components for Routine "earth_pause_4" ---
     earth_blank = visual.ImageStim(
@@ -2558,11 +2592,11 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 
                 # Frequencies for each trial
                 freq_trials = [[10], #Trial 1 frequency
-                            [9],   #Trial 2 frequency
-                            [1],  #Trial 3 frequency
-                            [15],  #Trial 4 frequency
-                            [15],  #Trial 5 frequency
-                            [15],  #Trial 6 frequency
+                            [15],   #Trial 2 frequency
+                            [20],  #Trial 3 frequency
+                            [7],  #Trial 4 frequency
+                            [5],  #Trial 5 frequency
+                            [8],  #Trial 6 frequency
                             [15],  #Trial 7 frequency
                             [15],  #Trial 8 frequency
                             [15],  #Trial 9 frequency
@@ -2576,7 +2610,6 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 targets = [1, 1, 1, 1, 1,
                            1, 1, 1, 1, 1]
                 
-                
                 #All objects
                 objects = [boxL1_1]
                 
@@ -2584,8 +2617,10 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 selectTarget(objects, targets[loop_num]) 
                 
                 test_1_mess.text = 'Level 1, Round ' + str(loop_num + 1)
+                
+                setFreqText(t1_freq, freq_curr_trial, targets[trials_1.thisN] - 1, objects)
                 # keep track of which components have finished
-                test_1Components = [earth1, boxL1_1, shipL1_1, Attack_message, test_1_mess]
+                test_1Components = [earth1, boxL1_1, shipL1_1, Attack_message, test_1_mess, t1_freq]
                 for thisComponent in test_1Components:
                     thisComponent.tStart = None
                     thisComponent.tStop = None
@@ -2776,6 +2811,39 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                     #Flicker objects are set frequencies
                     flickerObjects(objects, freq_curr_trial, frameN)
                     
+                    
+                    # *t1_freq* updates
+                    
+                    # if t1_freq is starting this frame...
+                    if t1_freq.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                        # keep track of start time/frame for later
+                        t1_freq.frameNStart = frameN  # exact frame index
+                        t1_freq.tStart = t  # local t and not account for scr refresh
+                        t1_freq.tStartRefresh = tThisFlipGlobal  # on global time
+                        win.timeOnFlip(t1_freq, 'tStartRefresh')  # time at next scr refresh
+                        # add timestamp to datafile
+                        thisExp.timestampOnFlip(win, 't1_freq.started')
+                        # update status
+                        t1_freq.status = STARTED
+                        t1_freq.setAutoDraw(True)
+                    
+                    # if t1_freq is active this frame...
+                    if t1_freq.status == STARTED:
+                        # update params
+                        pass
+                    
+                    # if t1_freq is stopping this frame...
+                    if t1_freq.status == STARTED:
+                        # is it time to stop? (based on global clock, using actual start)
+                        if tThisFlipGlobal > t1_freq.tStartRefresh + dur_test1-frameTolerance:
+                            # keep track of stop time/frame for later
+                            t1_freq.tStop = t  # not accounting for scr refresh
+                            t1_freq.frameNStop = frameN  # exact frame index
+                            # add timestamp to datafile
+                            thisExp.timestampOnFlip(win, 't1_freq.stopped')
+                            # update status
+                            t1_freq.status = FINISHED
+                            t1_freq.setAutoDraw(False)
                     
                     # check for quit (typically the Esc key)
                     if defaultKeyboard.getKeys(keyList=["escape"]):
@@ -3149,8 +3217,8 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                            1, 1, 1, 1, 1]
                 
                 # Frequencies for each object for every trial
-                freq_trials = [[2, 10 , 15 ], #Trial 1 frequencies
-                               [10 , 5 , 2 ], #Trial 2 frequencies
+                freq_trials = [[7, 10 , 15 ], #Trial 1 frequencies
+                               [7 , 10 , 15], #Trial 2 frequencies
                                [2 , 5 , 2 ], #Trial 3 frequencies
                                [6 , 4 , 30], #Trial 4 frequencies
                                [8 , 6 , 7 ], #Trial 5 frequencies
@@ -3170,8 +3238,10 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 selectTarget(objects, targets[trials_2.thisN]) 
                 
                 test_2_mess.text = 'Level 2, Round ' + str(trials_2.thisN + 1)
+                
+                setFreqText(t2_freq, freq_curr_trial, targets[trials_2.thisN] - 1, objects)
                 # keep track of which components have finished
-                test_2Components = [earth2, boxL2_1, shipL2_1, boxL2_2, shipL2_2, boxL2_3, shipL2_3, Attack_message2, test_2_mess]
+                test_2Components = [earth2, boxL2_1, shipL2_1, boxL2_2, shipL2_2, boxL2_3, shipL2_3, Attack_message2, test_2_mess, t2_freq]
                 for thisComponent in test_2Components:
                     thisComponent.tStart = None
                     thisComponent.tStop = None
@@ -3493,6 +3563,39 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                     # Run 'Each Frame' code from test_2_code
                     #Flicker objects are set frequencies
                     flickerObjects(objects, freq_curr_trial, frameN)
+                    
+                    # *t2_freq* updates
+                    
+                    # if t2_freq is starting this frame...
+                    if t2_freq.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                        # keep track of start time/frame for later
+                        t2_freq.frameNStart = frameN  # exact frame index
+                        t2_freq.tStart = t  # local t and not account for scr refresh
+                        t2_freq.tStartRefresh = tThisFlipGlobal  # on global time
+                        win.timeOnFlip(t2_freq, 'tStartRefresh')  # time at next scr refresh
+                        # add timestamp to datafile
+                        thisExp.timestampOnFlip(win, 't2_freq.started')
+                        # update status
+                        t2_freq.status = STARTED
+                        t2_freq.setAutoDraw(True)
+                    
+                    # if t2_freq is active this frame...
+                    if t2_freq.status == STARTED:
+                        # update params
+                        pass
+                    
+                    # if t2_freq is stopping this frame...
+                    if t2_freq.status == STARTED:
+                        # is it time to stop? (based on global clock, using actual start)
+                        if tThisFlipGlobal > t2_freq.tStartRefresh + dur_test2-frameTolerance:
+                            # keep track of stop time/frame for later
+                            t2_freq.tStop = t  # not accounting for scr refresh
+                            t2_freq.frameNStop = frameN  # exact frame index
+                            # add timestamp to datafile
+                            thisExp.timestampOnFlip(win, 't2_freq.stopped')
+                            # update status
+                            t2_freq.status = FINISHED
+                            t2_freq.setAutoDraw(False)
                     
                     # check for quit (typically the Esc key)
                     if defaultKeyboard.getKeys(keyList=["escape"]):
@@ -3868,10 +3971,10 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                            1, 1, 1, 1, 1]
                            
                 # Frequencies for each object for every trial
-                freq_trials = [[10, 5,
-                                2, 15], #Trial 1 frequencies
-                               [10, 5,
-                                2, 15], #Trial 2 frequencies
+                freq_trials = [[3, 7,
+                                10, 20], #Trial 1 frequencies
+                               [10, 7,
+                                25, 15], #Trial 2 frequencies
                                [10, 5,
                                 2, 15], #Trial 3 frequencies
                                [10, 5,
@@ -3899,8 +4002,10 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 selectTarget(objects, targets[trials_3.thisN])
                 
                 test_3_mess.text = 'Level 3, Round ' + str(trials_3.thisN + 1)
+                
+                setFreqText(t3_freq, freq_curr_trial, targets[trials_3.thisN] - 1, objects)
                 # keep track of which components have finished
-                test_3Components = [earth3, boxL3_1, shipL3_1, boxL3_2, shipL3_2, boxL3_3, shipL3_3, boxL3_4, shipL3_4, Attack_message3, test_3_mess]
+                test_3Components = [earth3, boxL3_1, shipL3_1, boxL3_2, shipL3_2, boxL3_3, shipL3_3, boxL3_4, shipL3_4, Attack_message3, test_3_mess, t3_freq]
                 for thisComponent in test_3Components:
                     thisComponent.tStart = None
                     thisComponent.tStop = None
@@ -4289,6 +4394,39 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                     #Flicker objects are set frequencies
                     flickerObjects(objects, freq_curr_trial, frameN)
                     
+                    # *t3_freq* updates
+                    
+                    # if t3_freq is starting this frame...
+                    if t3_freq.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                        # keep track of start time/frame for later
+                        t3_freq.frameNStart = frameN  # exact frame index
+                        t3_freq.tStart = t  # local t and not account for scr refresh
+                        t3_freq.tStartRefresh = tThisFlipGlobal  # on global time
+                        win.timeOnFlip(t3_freq, 'tStartRefresh')  # time at next scr refresh
+                        # add timestamp to datafile
+                        thisExp.timestampOnFlip(win, 't3_freq.started')
+                        # update status
+                        t3_freq.status = STARTED
+                        t3_freq.setAutoDraw(True)
+                    
+                    # if t3_freq is active this frame...
+                    if t3_freq.status == STARTED:
+                        # update params
+                        pass
+                    
+                    # if t3_freq is stopping this frame...
+                    if t3_freq.status == STARTED:
+                        # is it time to stop? (based on global clock, using actual start)
+                        if tThisFlipGlobal > t3_freq.tStartRefresh + dur_test3-frameTolerance:
+                            # keep track of stop time/frame for later
+                            t3_freq.tStop = t  # not accounting for scr refresh
+                            t3_freq.frameNStop = frameN  # exact frame index
+                            # add timestamp to datafile
+                            thisExp.timestampOnFlip(win, 't3_freq.stopped')
+                            # update status
+                            t3_freq.status = FINISHED
+                            t3_freq.setAutoDraw(False)
+                    
                     # check for quit (typically the Esc key)
                     if defaultKeyboard.getKeys(keyList=["escape"]):
                         thisExp.status = FINISHED
@@ -4657,16 +4795,16 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                     band_collector.start_test(dur_test4)
                 
                 #Target object for user to look at for each trial
-                targets = [2, 2, 3, 4, 5,
+                targets = [2, 8, 3, 4, 5,
                            6, 7, 8, 9, 1]
                 
                 # Frequencies for each object
-                freq_trials = [[10, 5, 2,
+                freq_trials = [[10, 9, 2,
                                 1, 8, 12,
                                 20, 25, 30],#Trial 1 frequencies
                                 [10, 5, 2,
                                 1, 8, 12,
-                                20, 25, 30], #Trial 2 frequencies
+                                25, 20, 30], #Trial 2 frequencies
                                 [10, 5, 2,
                                 1, 8, 12,
                                 20, 25, 30], #Trial 3 frequencies
@@ -4704,8 +4842,10 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 selectTarget(objects, targets[trials_4.thisN])
                 
                 test_4_mess.text = 'Level 4, Round ' + str(trials_4.thisN + 1)
+                
+                setFreqText(t4_freq, freq_curr_trial, targets[trials_4.thisN] - 1, objects)
                 # keep track of which components have finished
-                test_4Components = [earth4, boxL4_1, shipL4_1, boxL4_2, shipL4_2, boxL4_3, shipL4_3, boxL4_4, shipL4_4, boxL4_5, shipL4_5, boxL4_6, shipL4_6, boxL4_7, shipL4_7, boxL4_8, shipL4_8, boxL4_9, shipL4_9, Attack_message4, test_4_mess]
+                test_4Components = [earth4, boxL4_1, shipL4_1, boxL4_2, shipL4_2, boxL4_3, shipL4_3, boxL4_4, shipL4_4, boxL4_5, shipL4_5, boxL4_6, shipL4_6, boxL4_7, shipL4_7, boxL4_8, shipL4_8, boxL4_9, shipL4_9, Attack_message4, test_4_mess, t4_freq]
                 for thisComponent in test_4Components:
                     thisComponent.tStart = None
                     thisComponent.tStop = None
@@ -5423,6 +5563,39 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                     # Run 'Each Frame' code from test_4_code
                     #Flicker objects are set frequencies
                     flickerObjects(objects, freq_curr_trial, frameN)
+                    
+                    # *t4_freq* updates
+                    
+                    # if t4_freq is starting this frame...
+                    if t4_freq.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                        # keep track of start time/frame for later
+                        t4_freq.frameNStart = frameN  # exact frame index
+                        t4_freq.tStart = t  # local t and not account for scr refresh
+                        t4_freq.tStartRefresh = tThisFlipGlobal  # on global time
+                        win.timeOnFlip(t4_freq, 'tStartRefresh')  # time at next scr refresh
+                        # add timestamp to datafile
+                        thisExp.timestampOnFlip(win, 't4_freq.started')
+                        # update status
+                        t4_freq.status = STARTED
+                        t4_freq.setAutoDraw(True)
+                    
+                    # if t4_freq is active this frame...
+                    if t4_freq.status == STARTED:
+                        # update params
+                        pass
+                    
+                    # if t4_freq is stopping this frame...
+                    if t4_freq.status == STARTED:
+                        # is it time to stop? (based on global clock, using actual start)
+                        if tThisFlipGlobal > t4_freq.tStartRefresh + dur_test4-frameTolerance:
+                            # keep track of stop time/frame for later
+                            t4_freq.tStop = t  # not accounting for scr refresh
+                            t4_freq.frameNStop = frameN  # exact frame index
+                            # add timestamp to datafile
+                            thisExp.timestampOnFlip(win, 't4_freq.stopped')
+                            # update status
+                            t4_freq.status = FINISHED
+                            t4_freq.setAutoDraw(False)
                     
                     # check for quit (typically the Esc key)
                     if defaultKeyboard.getKeys(keyList=["escape"]):
