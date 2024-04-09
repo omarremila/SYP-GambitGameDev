@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.2.3),
-    on April 08, 2024, at 23:18
+    on April 09, 2024, at 19:58
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -40,13 +40,23 @@ import numpy as np
 
 #Update display to show target object
 def selectTarget(objects, target):
+    # If false only the border of target is. This looks better but is harder to detect the frequency
+    target_fill = False
     for i in range(len(objects)):
-        if i == (target - 1):
-            objects[i].fillColor = 'red'
-            objects[i].lineColor = 'red'
+        if target_fill == True:
+            if i == (target - 1):
+                objects[i].fillColor = 'red'
+                objects[i].lineColor = 'red'
+            else:
+                objects[i].fillColor = 'white'
+                objects[i].lineColor = 'white'
         else:
-            objects[i].fillColor = 'white'
-            objects[i].lineColor = 'white'
+            if i == (target - 1):
+                #objects[i].fillColor = 'None'
+                objects[i].lineColor = 'red'
+            else:
+                #objects[i].fillColor = 'None'
+                objects[i].lineColor = 'white'
 
 # Update opacities based on current frame number for each stimulus
 def flickerObjects(objects, freqs, frameN):
@@ -65,12 +75,16 @@ def compareFreq(EEGdata, freq):
     #freq_band = np.argmax(EEGdata)
     filtered_EEG = theta_beta_pass(EEGdata) #Cannot create delta or gamma bands right now
     freq_band = np.argmax(filtered_EEG)
+    
+    #Allow uncertainty ranges to compensate for noise and baseline band powers.
+    #A more sophisticated algorithm will be need to perfect this function
     if((EEGdata[1] / EEGdata[3] >= 0.75) and (5 <= freq < 9)):
         return True
     if((EEGdata[1] / EEGdata[2] <= 1.5) and (9 <= freq < 13)):
         return True
-    elif((EEGdata[2] / EEGdata[3] <= 1.5) and (13 <= freq < 32)):
+    if((EEGdata[2] / EEGdata[3] <= 1.5) and (13 <= freq < 32)):
         return True 
+        
     if (freq_band == DELTA) and (0 <= freq < 5):
         return True 
     elif (freq_band == THETA) and (5 <= freq < 9):
@@ -84,6 +98,7 @@ def compareFreq(EEGdata, freq):
     else:
         return False
     
+#We cannot create these frequencies in the brain yet
 def theta_beta_pass(data):
     band_pass = data
     band_pass[0] = 0
@@ -379,21 +394,21 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     # --- Initialize components for Routine "GlobalFunctions" ---
     # Run 'Begin Experiment' code from code
     #Set number of repetitions  for each test
-    global_rep_num = 1
+    global_rep_num = 10
     rep_num1 = global_rep_num
     rep_num2 = global_rep_num
     rep_num3 = global_rep_num
     rep_num4 = global_rep_num
     
     #Set number of trials for each test
-    global_trial_num = 3
+    global_trial_num = 10
     trial_num1 = global_trial_num
     trial_num2 = global_trial_num
     trial_num3 = global_trial_num
     trial_num4 = global_trial_num
     
     #Set duration of repetitions for each test
-    global_dur_test = 15
+    global_dur_test = 5
     dur_test1 = global_dur_test
     dur_test2 = global_dur_test
     dur_test3 = global_dur_test
@@ -406,8 +421,8 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     
     if (win.size[0] / win.size[1]) == 1.5: #Orientation normally used
         #Size/position of display objects including ship, target boxes and backgrounds
-        ship_size = (0.3, 0.3)
-        box_size = (0.3, 0.15)
+        ship_size = (0.15, 0.15)
+        box_size = (0.15, 0.075)
         game_back_size = (1.75, 1)
         game_back_pos = (-0.1, 0)
         home_back_size = (1.55, 1.15)
@@ -796,7 +811,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     boxL2_1 = visual.Rect(
         win=win, name='boxL2_1',
         width=box_size[0], height=box_size[1],
-        ori=0.0, pos=(0.1, -0.1), anchor='center',
+        ori=0.0, pos=(0.1, 0), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-1.0, interpolate=True)
     shipL2_1 = visual.ImageStim(
@@ -810,7 +825,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     boxL2_2 = visual.Rect(
         win=win, name='boxL2_2',
         width=box_size[0], height=box_size[1],
-        ori=0.0, pos=(0.35, -0.1), anchor='center',
+        ori=0.0, pos=(0.35, 0), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-3.0, interpolate=True)
     shipL2_2 = visual.ImageStim(
@@ -824,7 +839,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     boxL2_3 = visual.Rect(
         win=win, name='boxL2_3',
         width=box_size[0], height=box_size[1],
-        ori=0.0, pos=(0.6, -0.1), anchor='center',
+        ori=0.0, pos=(0.6, 0), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-5.0, interpolate=True)
     shipL2_3 = visual.ImageStim(
