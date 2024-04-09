@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.2.3),
-    on April 08, 2024, at 12:04
+    on April 08, 2024, at 23:18
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -42,8 +42,10 @@ import numpy as np
 def selectTarget(objects, target):
     for i in range(len(objects)):
         if i == (target - 1):
+            objects[i].fillColor = 'red'
             objects[i].lineColor = 'red'
         else:
+            objects[i].fillColor = 'white'
             objects[i].lineColor = 'white'
 
 # Update opacities based on current frame number for each stimulus
@@ -63,8 +65,12 @@ def compareFreq(EEGdata, freq):
     #freq_band = np.argmax(EEGdata)
     filtered_EEG = theta_beta_pass(EEGdata) #Cannot create delta or gamma bands right now
     freq_band = np.argmax(filtered_EEG)
-    print(filtered_EEG)
-    
+    if((EEGdata[1] / EEGdata[3] >= 0.75) and (5 <= freq < 9)):
+        return True
+    if((EEGdata[1] / EEGdata[2] <= 1.5) and (9 <= freq < 13)):
+        return True
+    elif((EEGdata[2] / EEGdata[3] <= 1.5) and (13 <= freq < 32)):
+        return True 
     if (freq_band == DELTA) and (0 <= freq < 5):
         return True 
     elif (freq_band == THETA) and (5 <= freq < 9):
@@ -87,7 +93,7 @@ def theta_beta_pass(data):
 def setFreqText(disp, freqs, target, objects):
     disp.text = str(freqs[target]) + "Hz"
     x = objects[target].pos[0]
-    y = objects[target].pos[1] + 0.07
+    y = objects[target].pos[1] + 0.1
     disp.pos = (x, y)
 # --- Setup global variables (available in all functions) ---
 # Ensure that relative paths start from the same directory as this script
@@ -380,14 +386,14 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     rep_num4 = global_rep_num
     
     #Set number of trials for each test
-    global_trial_num = 2
+    global_trial_num = 3
     trial_num1 = global_trial_num
     trial_num2 = global_trial_num
     trial_num3 = global_trial_num
     trial_num4 = global_trial_num
     
     #Set duration of repetitions for each test
-    global_dur_test = 5
+    global_dur_test = 15
     dur_test1 = global_dur_test
     dur_test2 = global_dur_test
     dur_test3 = global_dur_test
@@ -400,8 +406,8 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     
     if (win.size[0] / win.size[1]) == 1.5: #Orientation normally used
         #Size/position of display objects including ship, target boxes and backgrounds
-        ship_size = (0.15, 0.15)
-        box_size = (0.15, 0.075)
+        ship_size = (0.3, 0.3)
+        box_size = (0.3, 0.15)
         game_back_size = (1.75, 1)
         game_back_pos = (-0.1, 0)
         home_back_size = (1.55, 1.15)
@@ -423,10 +429,10 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         pickTest_back_size = (1.9, 1)
         about_back_size = (1.9, 1)
         
-        
-    
+    #time processing thread sleeps.
+    sleep_dur = 0.01
     #Create instance of band collection
-    band_collector = collecting_bands.BandCollector()
+    band_collector = collecting_bands.BandCollector(sleep_dur)
     # Start the data collection thread immediately, it will run indefinitely
     threading.Thread(target=band_collector.start_stream).start()
     
@@ -790,7 +796,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     boxL2_1 = visual.Rect(
         win=win, name='boxL2_1',
         width=box_size[0], height=box_size[1],
-        ori=0.0, pos=(0.1, 0), anchor='center',
+        ori=0.0, pos=(0.1, -0.1), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-1.0, interpolate=True)
     shipL2_1 = visual.ImageStim(
@@ -804,7 +810,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     boxL2_2 = visual.Rect(
         win=win, name='boxL2_2',
         width=box_size[0], height=box_size[1],
-        ori=0.0, pos=(0.35, 0), anchor='center',
+        ori=0.0, pos=(0.35, -0.1), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-3.0, interpolate=True)
     shipL2_2 = visual.ImageStim(
@@ -818,7 +824,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     boxL2_3 = visual.Rect(
         win=win, name='boxL2_3',
         width=box_size[0], height=box_size[1],
-        ori=0.0, pos=(0.6, 0), anchor='center',
+        ori=0.0, pos=(0.6, -0.1), anchor='center',
         lineWidth=5.0,     colorSpace='rgb',  lineColor=[1.0000, -1.0000, -1.0000], fillColor=None,
         opacity=None, depth=-5.0, interpolate=True)
     shipL2_3 = visual.ImageStim(
@@ -2591,9 +2597,9 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 
                 
                 # Frequencies for each trial
-                freq_trials = [[10], #Trial 1 frequency
-                            [15],   #Trial 2 frequency
-                            [20],  #Trial 3 frequency
+                freq_trials = [[7], #Trial 1 frequency
+                            [11],   #Trial 2 frequency
+                            [15],  #Trial 3 frequency
                             [7],  #Trial 4 frequency
                             [5],  #Trial 5 frequency
                             [8],  #Trial 6 frequency
@@ -3217,7 +3223,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                            1, 1, 1, 1, 1]
                 
                 # Frequencies for each object for every trial
-                freq_trials = [[7, 10 , 15 ], #Trial 1 frequencies
+                freq_trials = [[7, 3 , 15 ], #Trial 1 frequencies
                                [7 , 10 , 15], #Trial 2 frequencies
                                [2 , 5 , 2 ], #Trial 3 frequencies
                                [6 , 4 , 30], #Trial 4 frequencies
@@ -3967,16 +3973,16 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                     band_collector.start_test(dur_test3)
                 
                 #Target object for user to look at for each trial
-                targets = [4, 2, 3, 4, 1,
+                targets = [4, 1, 3, 4, 1,
                            1, 1, 1, 1, 1]
                            
                 # Frequencies for each object for every trial
                 freq_trials = [[3, 7,
                                 10, 20], #Trial 1 frequencies
                                [10, 7,
-                                25, 15], #Trial 2 frequencies
-                               [10, 5,
-                                2, 15], #Trial 3 frequencies
+                                9, 15], #Trial 2 frequencies
+                               [9, 10,
+                                20, 12], #Trial 3 frequencies
                                [10, 5,
                                 2, 15], #Trial 4 frequencies
                                [10, 5,
