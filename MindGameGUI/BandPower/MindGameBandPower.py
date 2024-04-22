@@ -7,7 +7,7 @@ import collecting_bands
 import threading
 import numpy as np
 
-duration = 10 #seconds
+
 displayLen = 200 #milliseconds
 
 #Updates GUI with average band powers
@@ -39,9 +39,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self.progressBar3.setValue(0)
         self.progressBar4.setValue(0)
         self.progressBar5.setValue(0)
-        self.band_collector.start_test(duration)
+        self.band_collector.start_test(self.durationBox.value())
         self.timer.start(displayLen)
-        self.stopTimer.start(duration*1000)
+        self.stopTimer.start(self.durationBox.value()*1000)
     
     #Stop collecting data when stop button is clicked
     def stop(self):
