@@ -20,6 +20,10 @@ fig, ax = plt.subplots()
 bars = plt.bar(df.columns, df.iloc[0])
 
 # Update function for the animation
+"""
+    Update function for the bar chart animation which adjusts the heights
+    of the bars to new data points.
+"""
 def update(frame):
     for bar, height in zip(bars, df.iloc[frame]):
         bar.set_height(height)
