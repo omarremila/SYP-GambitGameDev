@@ -34,16 +34,15 @@ This toolkit comprises a collection of Python scripts designed to handle and ana
 ```bash
 pip install numpy pandas matplotlib mne
 ```
-```🚀 Usage
+🚀 Usage
 Each script is standalone. Modify the parameters, paths, and configurations as described in the script's usage section above before running:
 python <script_name>.py
-```
-```🤝 Contributing
+🤝 Contributing
 Contributions to this toolkit are welcome. Please ensure to follow the coding standards and provide comments where necessary.
-```
-```📄 License
+
+📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
-```
+
 ### Enhancements in This Version:
 1. **Badges**: Added colorful badges for Python version and license type to immediately convey key information.
 2. **Table Format**: Utilized a table to neatly organize scripts along with their descriptions and features, making it easier to digest at a glance.
