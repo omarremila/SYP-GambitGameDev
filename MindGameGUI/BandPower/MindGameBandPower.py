@@ -9,6 +9,8 @@ import numpy as np
 
 duration = 10 #seconds
 displayLen = 200 #milliseconds
+
+#Updates GUI with average band powers
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__(None)
