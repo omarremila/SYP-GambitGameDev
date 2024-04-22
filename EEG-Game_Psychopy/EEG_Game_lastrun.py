@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.2.3),
-    on April 09, 2024, at 19:58
+    on April 22, 2024, at 16:20
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -40,11 +40,11 @@ import numpy as np
 
 #Update display to show target object
 def selectTarget(objects, target):
-    # If false only the border of target is. This looks better but is harder to detect the frequency
-    target_fill = False
+    # If false only the border of target is shown. This looks better but is harder to detect the frequency
+    target_fill = True
     for i in range(len(objects)):
         if target_fill == True:
-            if i == (target - 1):
+            if i == (target - 1): #The target
                 objects[i].fillColor = 'red'
                 objects[i].lineColor = 'red'
             else:
@@ -52,16 +52,15 @@ def selectTarget(objects, target):
                 objects[i].lineColor = 'white'
         else:
             if i == (target - 1):
-                #objects[i].fillColor = 'None'
                 objects[i].lineColor = 'red'
             else:
-                #objects[i].fillColor = 'None'
                 objects[i].lineColor = 'white'
 
 # Update opacities based on current frame number for each stimulus
 def flickerObjects(objects, freqs, frameN):
+    refresh_rate = 60
     for i in range(len(objects)): #loop through all objects
-        frames_per_cycle = 60 // freqs[i]
+        frames_per_cycle = refresh_rate // freqs[i]
         objects[i].opacity = (((frameN) % frames_per_cycle) < (frames_per_cycle / 2))
 
 #Check if frequency is correct range     
@@ -73,11 +72,11 @@ def compareFreq(EEGdata, freq):
     GAMMA = 4
     
     #freq_band = np.argmax(EEGdata)
-    filtered_EEG = theta_beta_pass(EEGdata) #Cannot create delta or gamma bands right now
+    filtered_EEG = theta_beta_pass(EEGdata) #Filter out delta and gamma bands
     freq_band = np.argmax(filtered_EEG)
     
     #Allow uncertainty ranges to compensate for noise and baseline band powers.
-    #A more sophisticated algorithm will be need to perfect this function
+    #A more sophisticated algorithm will be needed to perfect this function
     if((EEGdata[1] / EEGdata[3] >= 0.75) and (5 <= freq < 9)):
         return True
     if((EEGdata[1] / EEGdata[2] <= 1.5) and (9 <= freq < 13)):
@@ -98,13 +97,14 @@ def compareFreq(EEGdata, freq):
     else:
         return False
     
-#We cannot create these frequencies in the brain yet
+#We cannot create these frequencies accurately in the brain yet
 def theta_beta_pass(data):
     band_pass = data
     band_pass[0] = 0
     band_pass[4] = 0
     return band_pass
 
+#Display freq above the target
 def setFreqText(disp, freqs, target, objects):
     disp.text = str(freqs[target]) + "Hz"
     x = objects[target].pos[0]
@@ -439,7 +439,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         game_back_pos = (-0.1, 0)
         home_back_size = (1.85, 1.2)
         home_back_pos = (0.023, 0)
-        warning_back_size = (1.9, 1) #Current window size
+        warning_back_size = (1.9, 1)
         gameDet_back_size = (1.9, 1)
         pickTest_back_size = (1.9, 1)
         about_back_size = (1.9, 1)
@@ -1320,7 +1320,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
     buttont4 = False
     lose = False
     homeButton = False
-    newSession = True
+    newSession = True #Show main menu when software is first run
     about_exp_button = False
     
     # the Routine "GlobalFunctions" was not non-slip safe, so reset the non-slip timer
@@ -1522,6 +1522,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
            return_to_homepage.addData('start_button.timesOn', "")
            return_to_homepage.addData('start_button.timesOff', "")
         # Run 'End Routine' code from code_7
+        #Variables to show instructions
         cur_row = 0
         button_pressed = "none"
         show_instructions = 1
@@ -1563,20 +1564,24 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
             # update component parameters for each repeat
             thisExp.addData('instructionprep.started', globalClock.getTime())
             # Run 'Begin Routine' code from code_2
+            #Skip instructions
             if (about_exp_button == False) :
                 instructions_controller.finished = 1
                 show_instructions = 0
                 cur_row = max_slides
+                
             if(button_pressed == "next"):
                 cur_row += 1 
              
             elif (button_pressed == "back"):
-                cur_row -= 1 
-            button_pressed = "none"
+                cur_row -= 1
+            
+            button_pressed = "none" #Allow buttons to be pressed again
             
             if (cur_row < 0) :
                 cur_row = 0 
-             
+            
+            #End of instructions
             if (cur_row > max_slides) :
                 instructions_controller.finished = 1
                 show_instructions = 0
@@ -2021,7 +2026,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
            return_to_homepage.addData('button.timesOn', "")
            return_to_homepage.addData('button.timesOff', "")
         # Run 'End Routine' code from code_6
-        skip = False
+        skip = False #Skip button
         # the Routine "WarningScreen" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
@@ -2187,9 +2192,9 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         home_button.reset()
         # Run 'Begin Routine' code from code_5
         text.bold = True
-        lose = False
+        lose = False 
         homeButton = False
-        newSession = False
+        newSession = False #Do not show main menu again unless home button is clicked
         # keep track of which components have finished
         PickTestComponents = [brain_animation, button_t1, button_t2, button_t3, button_t4, button_all, home_button, text]
         for thisComponent in PickTestComponents:
@@ -2610,9 +2615,8 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                     #Start aquiring data
                     band_collector.start_test(dur_test1)
                 
-                
                 # Frequencies for each trial
-                freq_trials = [[7], #Trial 1 frequency
+                freq_trials = [[1], #Trial 1 frequency
                             [11],   #Trial 2 frequency
                             [15],  #Trial 3 frequency
                             [7],  #Trial 4 frequency
@@ -2829,7 +2833,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                             test_1_mess.status = FINISHED
                             test_1_mess.setAutoDraw(False)
                     # Run 'Each Frame' code from test_1_code
-                    #Flicker objects are set frequencies
+                    #Flicker objects at set frequencies
                     flickerObjects(objects, freq_curr_trial, frameN)
                     
                     
@@ -2893,9 +2897,11 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                         thisComponent.setAutoDraw(False)
                 thisExp.addData('test_1.stopped', globalClock.getTime())
                 # Run 'End Routine' code from test_1_code
+                #Only run code if this test was activated
                 if buttont1 == True and lose == False:
+                    #Receive band powers
                     EEGdata = band_collector.getEEGData()
-                    #EEGdata = [6, 2, 3, 8, 0.25]
+                    #Check if user has lost
                     lose = not compareFreq(EEGdata, freq_curr_trial[targets[trials_1.thisN] - 1])
                 # the Routine "test_1" was not non-slip safe, so reset the non-slip timer
                 routineTimer.reset()
@@ -3582,7 +3588,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                             test_2_mess.status = FINISHED
                             test_2_mess.setAutoDraw(False)
                     # Run 'Each Frame' code from test_2_code
-                    #Flicker objects are set frequencies
+                    #Flicker objects at set frequencies
                     flickerObjects(objects, freq_curr_trial, frameN)
                     
                     # *t2_freq* updates
@@ -3647,8 +3653,6 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # Run 'End Routine' code from test_2_code
                 if buttont2 == True and lose == False:
                     EEGdata = band_collector.getEEGData()
-                    #EEGdata = [6, 2, 3, 4, 3]
-                
                     lose = not compareFreq(EEGdata, freq_curr_trial[targets[trials_2.thisN] - 1])
                 
                 # the Routine "test_2" was not non-slip safe, so reset the non-slip timer
@@ -4412,7 +4416,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                             test_3_mess.status = FINISHED
                             test_3_mess.setAutoDraw(False)
                     # Run 'Each Frame' code from test_3_code
-                    #Flicker objects are set frequencies
+                    #Flicker objects at set frequencies
                     flickerObjects(objects, freq_curr_trial, frameN)
                     
                     # *t3_freq* updates
@@ -4477,7 +4481,6 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # Run 'End Routine' code from test_3_code
                 if buttont3 == True and lose == False:
                     EEGdata = band_collector.getEEGData()
-                    #EEGdata = [6, 2, 3, 4, 3]
                     lose = not compareFreq(EEGdata, freq_curr_trial[targets[trials_3.thisN] - 1])
                 # the Routine "test_3" was not non-slip safe, so reset the non-slip timer
                 routineTimer.reset()
@@ -5582,7 +5585,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                             test_4_mess.status = FINISHED
                             test_4_mess.setAutoDraw(False)
                     # Run 'Each Frame' code from test_4_code
-                    #Flicker objects are set frequencies
+                    #Flicker objects at set frequencies
                     flickerObjects(objects, freq_curr_trial, frameN)
                     
                     # *t4_freq* updates
@@ -5647,7 +5650,6 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
                 # Run 'End Routine' code from test_4_code
                 if buttont4 == True and lose == False:
                     EEGdata = band_collector.getEEGData()
-                    #EEGdata = [6, 2, 3, 4, 3]
                     lose = not compareFreq(EEGdata, freq_curr_trial[targets[trials_4.thisN] - 1])
                 # the Routine "test_4" was not non-slip safe, so reset the non-slip timer
                 routineTimer.reset()
@@ -5797,8 +5799,6 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         thisExp.addData('earth_win.started', globalClock.getTime())
         # skip this Routine if its 'Skip if' condition is True
         continueRoutine = continueRoutine and not (lose == True or homeButton == True)
-        # Run 'Begin Routine' code from code_8
-        #win_message.text = str(EEGdata)
         # keep track of which components have finished
         earth_winComponents = [earth_win_2, win_message]
         for thisComponent in earth_winComponents:
@@ -5924,8 +5924,6 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         thisExp.addData('earth_lose.started', globalClock.getTime())
         # skip this Routine if its 'Skip if' condition is True
         continueRoutine = continueRoutine and not (lose == False or homeButton == True)
-        # Run 'Begin Routine' code from code_9
-        #lose_message.text = str(EEGdata)
         # keep track of which components have finished
         earth_loseComponents = [earth_lose_2, lose_message]
         for thisComponent in earth_loseComponents:
@@ -6050,6 +6048,7 @@ def run(expInfo, thisExp, win, inputs, globalClock=None, thisSession=None):
         # update component parameters for each repeat
         thisExp.addData('reset_buttons.started', globalClock.getTime())
         # Run 'Begin Routine' code from reset_button_bool
+        #Reset buttons
         buttont1 = False
         buttont2 = False
         buttont3 = False
