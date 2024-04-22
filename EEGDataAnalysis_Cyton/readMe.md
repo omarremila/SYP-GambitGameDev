@@ -47,4 +47,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 2. **Table Format**: Utilized a table to neatly organize scripts along with their descriptions and features, making it easier to digest at a glance.
 3. **Section Icons**: Added emojis to section titles to draw attention and improve navigation.
 
-This enhanced README aims to make the repository more accessible and attractive, encouraging users to read through and understand the available tools more clearly. Be sure to adjust the paths and any specific script details to match the actual content and usage accurately.
+This enhanced README aims to make the repository more accessible and attractive,
+encouraging users to read through and understand the available tools more clearly.
+Be sure to adjust the paths and any specific script details to match the actual content and usage accurately.
