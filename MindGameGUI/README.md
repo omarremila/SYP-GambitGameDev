@@ -1,6 +1,6 @@
 # MindGameGUI
 
-This repository contains the `MindGameGUI` application written in Python using the PyQt6 framework. The application features a graphical user interface to simulate real-time data updates on progress bars, intended to reflect cognitive load or focus levels in a "Mind Game."
+This repository contains the `MindGameGUI` applications written in Python using the PyQt6 framework. The applications feature a graphical user interface to simulate real-time data updates on progress bars, intended to reflect cognitive band powers or focus levels in a "Mind Game." 'MindGameBandPower' displays the average bandpowers collected over time from UDP transmission and 'MindGameFrequency' shows current frequency value, concentration level and associated band power. 'MindGameFrequency' currently uses simulated data because we do not have an algorithm to differentiate between specific frequecies.
 
 ## Overview
 
